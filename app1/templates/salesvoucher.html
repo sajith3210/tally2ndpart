@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% block body %}
+{% load static %}
+<style>
+    * {
+        color: black;
+    }
+
+    .main-head {
+        background-color: aqua;
+        color: black;
+        font-size: medium;
+        padding: 2px;
+
+    }
+
+    .main-color {
+        background-color: bisque;
+    }
+
+    nav-item {
+        color: black;
+    }
+</style>
+<div class="container main-color">
+    <div class="card main-color">
+
+        <div class="card-body">
+            <div class="row ">
+                <div class="col-md-6 ">
+                    <h3 class="main-head">Accounting Voucher Creation</h3>
+                    <p style="background-color: blueviolet;display: inline; padding: 0 25px;">
+                        Sales
+                    </p>&nbsp;&nbsp;&nbsp;
+                    <label>NO</label>
+                    <input type="text"> <br><br> <br>
+                    <label for="">Party A/C name :</label>
+                    &nbsp;&nbsp;&nbsp;
+                    <input type="text" size="35"> <br> <br>
+                    <label for="">Current Balance :</label>
+                    &nbsp;&nbsp;
+                    <input type="text" size="35"> <br> <br>
+
+                    <label for="">Sales ledger :</label>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="text" size="35"> <br> <br>
+
+                    <label for="">Current Balance :</label>
+                    &nbsp;&nbsp;
+                    <input type="text" size="35"> <br> <br>
+
+                </div>
+                <div class="col-md-3"></div>
+                <div class="col-md-3">
+                    <div class="btn-group-vertical" role="group" >
+                        <button type="button" class="btn btn-info">Date</button>
+                        <button type="button" class="btn btn-info">Company</button> <br>
+                        <button type="button" class="btn btn-info">Contra</button>
+                        <button type="button" class="btn btn-info">Payment</button>
+                        <button type="button" class="btn btn-info">Receipt</button>
+                        <button type="button" class="btn btn-info">Journal</button>
+                    </div>
+      
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <table class="table">
+        <thead>
+            <th><strong>Name of item</strong> </th>
+            <th><strong>Quantity</strong></th>
+            <th><strong>Rate</strong> <i style="color: black;">Per</i> </th>
+            <th><strong>Amount</strong></th>
+        </thead>
+    </table>
+</div>
+{% endblock %}
