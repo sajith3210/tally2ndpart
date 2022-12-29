@@ -36,14 +36,19 @@
                     <input type="text"> <br><br> <br>
                     <label for="">Party A/C name :</label>
                     &nbsp;&nbsp;&nbsp;
-                    <input type="text" size="35"> <br> <br>
+                    <select style="width: 250px;height: 30px;" name="party_ac_name">
+                        <option value="red">Red</option>
+                    </select> <br> <br>
+
                     <label for="">Current Balance :</label>
                     &nbsp;&nbsp;
                     <input type="text" size="35"> <br> <br>
 
                     <label for="">Sales ledger :</label>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <input type="text" size="35"> <br> <br>
+                      <select  style="width: 250px;height: 30px;" name="sale_ledger">
+                        <option value="red">Red</option>
+                    </select> <br> <br>
 
                     <label for="">Current Balance :</label>
                     &nbsp;&nbsp;
@@ -73,6 +78,9 @@
             <th><strong>Rate</strong> <i style="color: black;">Per</i> </th>
             <th><strong>Amount</strong></th>
         </thead>
+        <tbody>
+            <tr></tr>
+        </tbody>
     </table>
 </div>
 {% endblock %}
