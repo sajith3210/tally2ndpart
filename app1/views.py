@@ -10974,3 +10974,6 @@ def item_inwards(request,pk,d1,d2):
     
 def sales_voucher(request):
     return render(request,'salesvoucher.html')
+
+def dispathch_detail(request):
+    return render(request,'dispathch_detail.html')

@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% block body %}
+{% load static %}
+<style>
+    *{
+        color: black;
+    }
+       .main-head {
+        background-color: aqua;
+        color: black;
+        font-size: medium;
+        padding: 2px;
+
+    }
+        .main-color{
+            background-color: bisque;
+        }
+</style>
+<div class="container">
+     <h3 class="main-head">Party Details</Details></h3>
+     <!-- main row  -->
+     <div class="row mt-5"> 
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+
+    <div class="card main-color">
+        <div class="card-body">
+            <center style="text-decoration: underline;color: black;">Dispatch Details</center>
+                         <!-- card divide row  -->
+                         <div class="row mt-2"> 
+                            <div class="col-md-5">
+                               <p>Delivery Note No(s) :</p> 
+                               <input type="text" name="" id="">
+                            </div>
+                            <div class="col-md-1"></div>
+                            <div class="col-md-5">
+                                <p style="display: inline;">Dispathc Doc No(s) :</p> 
+                                <input type="text" name="" id="">
+                                <p style="display: inline;">Dispatched through :</p>
+                                <input class="mt-3" type="text" name="" id="">
+                                <p style="display: inline;">Destination :</p>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <input class="mt-3"  type="text" name="" id=""> <br>
+                                <p style="display: inline;">Carrier Name/Agent :</p>
+                                <input class="mt-3" type="text" name="" id="">
+                             </div>
+                             <div class="col-md-1"></div>
+                        </div>   
+        </div>
+        </div>
+    </div>
+    <div class="col-md-1"></div>
+    </div>
+    </div>
+    
+
+
+{% endblock %}

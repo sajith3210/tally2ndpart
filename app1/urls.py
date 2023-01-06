@@ -677,6 +677,7 @@ urlpatterns = [
     path('stock_ageing_primary',views.stock_ageing_primary,name = 'stock_ageing_primary'),
     
     path('salesvoucher/',views.sales_voucher,name='salesvoucher'),
+    path('dispathch_detail/',views.dispathch_detail,name='dispathch_detail'),
     path(r'^media/(?P<path>.*)$', serve,{'document_root': settings.MEDIA_ROOT}),
               
                          
