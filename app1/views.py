@@ -10977,3 +10977,8 @@ def sales_voucher(request):
 
 def dispathch_detail(request):
     return render(request,'dispathch_detail.html')
+
+def party_detail(request):
+    return render(request,'party_detail.html')
+
+
