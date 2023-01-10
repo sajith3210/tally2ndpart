@@ -36,7 +36,10 @@
                     <input type="text"> <br><br> <br>
                     <label for="">Party A/C name :</label>
                     &nbsp;&nbsp;&nbsp;
-                    <select style="width: 250px;height: 30px;" name="party_ac_name">
+                    <select style="width: 250px;height: 30px;" name="party_ac_name" onchange="location = this.value;">
+                        <optgroup  label="List Of Ledger Accounts"></optgroup>
+                        <option  selected disabled ></option>
+                        <option value="{% url  'ledgers' %}"  >Create</option>
                         <option value="red">Red</option>
                     </select> <br> <br>
 
@@ -46,7 +49,10 @@
 
                     <label for="">Sales ledger :</label>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                      <select  style="width: 250px;height: 30px;" name="sale_ledger">
+                      <select  style="width: 250px;height: 30px;" name="sale_ledger" onchange="location = this.value;">
+                        <optgroup  label="List Of Ledger Accounts"></optgroup>
+                        <option  selected disabled ></option>
+                        <option value="{% url  'ledgers' %}"  >Create</option>
                         <option value="red">Red</option>
                     </select> <br> <br>
 

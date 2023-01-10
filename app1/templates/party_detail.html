@@ -50,9 +50,10 @@
                             <div class="col-8">
                                 <select class="form-control form-control-sm" name="party_ac_name" onchange="location = this.value;">
                                     <optgroup  label="List Of Ledger Accounts"></optgroup>
+                                    <option  selected disabled ></option>
                                     <option value="{% url  'ledgers' %}"  >Create</option>
-                                    <option value="red">New party</option>
-                                    <option value="red">Cash</option>
+                                    <option value="#">New party</option>
+                                    <option value="#">Cash</option>
                                 </select> 
                             </div>
                         </div>
