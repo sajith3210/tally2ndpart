@@ -48,10 +48,10 @@
                                <label for="">Buyer (Bill to)</label> 
                             </div>
                             <div class="col-8">
-                                <select class="form-control form-control-sm" name="party_ac_name" onchange="location = this.value;">
+                                <select class="form-control form-control-sm" name="party_ac_name" >
                                     <optgroup  label="List Of Ledger Accounts"></optgroup>
-                                    <option  selected disabled ></option>
-                                    <option value="{% url  'ledgers' %}"  >Create</option>
+                                    <option   selected disabled ></option>
+                                    <option onclick=newpage()  >Create</option>
                                     <option value="#">New party</option>
                                     <option value="#">Cash</option>
                                 </select> 
@@ -138,5 +138,9 @@
 </div>
 
 
-
+<script>
+    function newpage(){
+    window.location="{% url 'ledgers' %}"
+    }
+</script>
 {% endblock %}

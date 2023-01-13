@@ -10973,7 +10973,14 @@ def item_inwards(request,pk,d1,d2):
 
     
 def sales_voucher(request):
-    return render(request,'salesvoucher.html')
+    sd=tally_ledger.objects.filter(under='Sundry_Debtors').first()
+    print('sd is',sd)
+    cs=tally_ledger.objects.filter(under='Cash in Hand').first()
+    try:
+        ldger=tally_ledger.objects.filter(under='Sundry Debtors').filter(under='Cash in hand')
+    except:
+        ledger=None
+    return render(request,'salesvoucher.html',{'ledger':ledger})
 
 def dispathch_detail(request):
     return render(request,'dispathch_detail.html')

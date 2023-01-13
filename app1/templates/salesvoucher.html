@@ -49,11 +49,16 @@
 
                     <label for="">Sales ledger :</label>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                      <select  style="width: 250px;height: 30px;" name="sale_ledger" onchange="location = this.value;">
+                      <select  style="width: 250px;height: 30px;" name="sale_ledger" >
                         <optgroup  label="List Of Ledger Accounts"></optgroup>
                         <option  selected disabled ></option>
-                        <option value="{% url  'ledgers' %}"  >Create</option>
-                        <option value="red">Red</option>
+                        <option onchange="location = this.value;" value="{% url  'ledgers' %}"  >Create</option>
+                        
+                        {% for ld in ldger  %}
+                        <option value="red">{{ld.under}}</option>
+                        {% endfor %}
+                            
+                        
                     </select> <br> <br>
 
                     <label for="">Current Balance :</label>
