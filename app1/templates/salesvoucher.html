@@ -21,6 +21,20 @@
     nav-item {
         color: black;
     }
+    select  option  {
+        background-color: rgb(255 0 0 / 14%);
+        color: black;
+    }
+    select option:active ,section option:focus, section option:hover ,section option:checked{
+        background-color: rgb(255 0 0 / 14%);
+        color: black;
+    }
+    .form-control,
+    .form-control:focus {
+        background-color: rgb(255 0 0 / 14%);
+        color: black;
+        
+    }
 </style>
 <div class="container main-color">
     <div class="card main-color">
@@ -54,8 +68,10 @@
                         <option  selected disabled ></option>
                         <option onchange="location = this.value;" value="{% url  'ledgers' %}"  >Create</option>
                         
-                        {% for ld in ldger  %}
-                        <option value="red">{{ld.under}}</option>
+                        {% for ld in ldg  %}
+                        <option value="{{ld.under}}">{{ld.under}}
+                            
+                        </option>
                         {% endfor %}
                             
                         

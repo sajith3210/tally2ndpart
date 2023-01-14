@@ -40,15 +40,18 @@
         <div class="col-md-5">
             <div class="card main-color">
                 <div class="card-body">
+                    <form action="" method="post">
+                        {% csrf_token %}
                     <strong>
                         <center style="text-decoration: underline;">Party Details
                         </center> </strong>
+                        
                         <div class="form-group row">
                             <div class="col-4">
                                <label for="">Buyer (Bill to)</label> 
                             </div>
                             <div class="col-8">
-                                <select class="form-control form-control-sm" name="party_ac_name" >
+                                <select class="form-control form-control-sm" name="buyer_bill_to" >
                                     <optgroup  label="List Of Ledger Accounts"></optgroup>
                                     <option   selected disabled ></option>
                                     <option onclick=newpage()  >Create</option>
@@ -62,7 +65,7 @@
                                <label for="">Mailing Name</label> 
                             </div>
                             <div class="col-8">
-                                <input class="form-control form-control-sm" type="text" name="" id="">
+                                <input name="mailing_name" class="form-control form-control-sm" type="text" name="" id="">
                             </div>
                         </div>
                         <div class="form-group row">
@@ -70,7 +73,7 @@
                                <label for="">Adress</label> 
                             </div>
                             <div class="col-8">
-                                <textarea class="form-control form-control-sm" name="" id="" cols="30" rows="10"></textarea>
+                                <textarea class="form-control form-control-sm" name="adress" id="" cols="30" rows="10"></textarea>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -78,9 +81,43 @@
                                <label for="">States</label> 
                             </div>
                             <div class="col-8">
-                                <select class="form-control form-control-sm" name="party_ac_name">
+                                <select class="form-control form-control-sm" name="state">
                                     <optgroup  label="List Of States"></optgroup>
-                                    <option value="red">Kerala</option>
+                                    <option value="">Select State</option>
+                                    <option value="Andhra Pradesh">Andhra Pradesh</option>
+                                    <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                                    <option value="Assam">Assam</option>
+                                    <option value="Bihar">Bihar</option>
+                                    <option value="Chhattisgarh">Chhattisgarh</option>
+                                    <option value="Goa">Goa</option>
+                                    <option value="Gujarat">Gujarat</option>
+                                    <option value="Haryana">Haryana</option>
+                                    <option value="Himachal Pradesh">Himachal Pradesh</option>
+                                    <option value="Jharkhand">Jharkhand</option>
+                                    <option value="Karnataka">Karnataka</option>
+                                    <option value="Kerala">Kerala</option>
+                                    <option value="Madhya Pradesh">Madhya Pradesh</option>
+                                    <option value="Maharashtra">Maharashtra</option>
+                                    <option value="Manipur">Manipur</option>
+                                    <option value="Meghalaya">Meghalaya</option>
+                                    <option value="Mizoram">Mizoram</option>
+                                    <option value="Nagaland">Nagaland</option>
+                                    <option value="Odisha">Odisha</option>
+                                    <option value="Punjab">Punjab</option>
+                                    <option value="Rajasthan">Rajasthan</option>
+                                    <option value="Sikkim">Sikkim</option>
+                                    <option value="Tamil Nadu">Tamil Nadu</option>
+                                    <option value="Telangana">Telangana</option>
+                                    <option value="Tripura">Tripura</option>
+                                    <option value="Uttar Pradesh">Uttar Pradesh</option>
+                                    <option value="Uttarakhand">Uttarakhand</option>
+                                    <option value="West Bengal">West Bengal</option>
+                                    <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+                                    <option value="Chandigarh">Chandigarh</option>
+                                    <option value="Dadra and Nagar Haveli">Dadra and Nagar Haveli</option>
+                                    <option value="Daman and Diu">Daman and Diu</option>
+                                    <option value="Lakshadweep">Lakshadweep</option>
+                                    <option value="Puducherry">Puducherry</option>
                                 </select> 
                             </div>
                         </div>
@@ -89,9 +126,9 @@
                                <label for="">Country</label> 
                             </div>
                             <div class="col-8">
-                                <select class="form-control form-control-sm" name="party_ac_name">
+                                <select id="country" class="form-control form-control-sm" name="country">
                                     <optgroup  label="List Of Countries"></optgroup>
-                                    <option value="red">India</option>
+                                    
                                 </select> 
                             </div>
                         </div>
@@ -100,22 +137,22 @@
                              <label style="font-size:11px;" for="">GST Registration type</label> 
                             </div>
                             <div class="col-8">
-                                <select class="form-control form-control-sm" name="party_ac_name">
+                                <select  class="form-control form-control-sm" name="gst_reg_typ">
                                     <optgroup  label="Registration types"></optgroup>
-                                    <option value="red">Unknown</option>
-                                    <option value="red">Composition</option>
-                                    <option value="red">Consumer</option>
-                                    <option value="red">Regular</option>
-                                    <option value="red">Unregistered</option>
+                                    <option value="Unknown">Unknown</option>
+                                    <option value="Composition">Composition</option>
+                                    <option value="Consumer">Consumer</option>
+                                    <option value="Regular">Regular</option>
+                                    <option value="Unregistered">Unregistered</option>
                                 </select> 
                             </div>
                         </div>
                         <div class="form-group row">
                             <div class="col-4">
-                               <label for="">GSTN/UN</label> 
+                               <label for="">GSTIN/UN</label> 
                             </div>
                             <div class="col-8">
-                                <input class="form-control form-control-sm" type="text" name="" id="">
+                                <input class="form-control form-control-sm" type="text" name="GSTIN" id="">
                             </div>
                         </div>
                         <div class="form-group row">
@@ -123,13 +160,54 @@
                                <label for="">Place of Supply</label> 
                             </div>
                             <div class="col-8">
-                                <select class="form-control form-control-sm" name="party_ac_name">
+                                <select class="form-control form-control-sm" name="place_of_supply">
                                     <optgroup  label="List Of States"></optgroup>
-                                    <option value="red">Kerala</option>
+                                    <option value="Andhra Pradesh">Andhra Pradesh</option>
+                                    <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                                    <option value="Assam">Assam</option>
+                                    <option value="Bihar">Bihar</option>
+                                    <option value="Chhattisgarh">Chhattisgarh</option>
+                                    <option value="Goa">Goa</option>
+                                    <option value="Gujarat">Gujarat</option>
+                                    <option value="Haryana">Haryana</option>
+                                    <option value="Himachal Pradesh">Himachal Pradesh</option>
+                                    <option value="Jharkhand">Jharkhand</option>
+                                    <option value="Karnataka">Karnataka</option>
+                                    <option value="Kerala">Kerala</option>
+                                    <option value="Madhya Pradesh">Madhya Pradesh</option>
+                                    <option value="Maharashtra">Maharashtra</option>
+                                    <option value="Manipur">Manipur</option>
+                                    <option value="Meghalaya">Meghalaya</option>
+                                    <option value="Mizoram">Mizoram</option>
+                                    <option value="Nagaland">Nagaland</option>
+                                    <option value="Odisha">Odisha</option>
+                                    <option value="Punjab">Punjab</option>
+                                    <option value="Rajasthan">Rajasthan</option>
+                                    <option value="Sikkim">Sikkim</option>
+                                    <option value="Tamil Nadu">Tamil Nadu</option>
+                                    <option value="Telangana">Telangana</option>
+                                    <option value="Tripura">Tripura</option>
+                                    <option value="Uttar Pradesh">Uttar Pradesh</option>
+                                    <option value="Uttarakhand">Uttarakhand</option>
+                                    <option value="West Bengal">West Bengal</option>
+                                    <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+                                    <option value="Chandigarh">Chandigarh</option>
+                                    <option value="Dadra and Nagar Haveli">Dadra and Nagar Haveli</option>
+                                    <option value="Daman and Diu">Daman and Diu</option>
+                                    <option value="Lakshadweep">Lakshadweep</option>
+                                    <option value="Puducherry">Puducherry</option>
                                 </select> 
                             </div>
                         </div>
-                    
+                        <div class="form-group row">
+                            <div class="col-4"></div>
+                            <div class="col-8">
+                                <button class="btn btn-lg btn-success w-75" type="submit">
+                                    Save
+                                </button>
+                            </div>
+                        </div>
+                   </form>
                 </div>
             </div>
         </div>
@@ -139,8 +217,17 @@
 
 
 <script>
-    function newpage(){
-    window.location="{% url 'ledgers' %}"
-    }
+    fetch("https://restcountries.com/v2/all")
+    .then(response => response.json())
+    .then(data => {
+        var select = document.getElementById("country");
+        data.forEach(function(country){
+            var option = document.createElement("option");
+            option.value = country.alpha2Code;
+            option.text = country.name;
+            select.appendChild(option);
+        });
+    });
+    
 </script>
 {% endblock %}

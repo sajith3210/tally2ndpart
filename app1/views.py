@@ -10973,19 +10973,53 @@ def item_inwards(request,pk,d1,d2):
 
     
 def sales_voucher(request):
-    sd=tally_ledger.objects.filter(under='Sundry_Debtors').first()
-    print('sd is',sd)
-    cs=tally_ledger.objects.filter(under='Cash in Hand').first()
-    try:
-        ldger=tally_ledger.objects.filter(under='Sundry Debtors').filter(under='Cash in hand')
-    except:
-        ledger=None
-    return render(request,'salesvoucher.html',{'ledger':ledger})
+    print('sales voucher view start')
+    if tally_ledger.objects.filter(under__in=['Sundry_Debtors','Cash in Hand']).exists():
+        for obj in tally_ledger.objects.filter(under__in=['Sundry_Debtors','Cash in Hand']):
+            print('type of obj is',obj)
+            ldg=obj
+    # print('ldg value is',type(ldg),ldg)
+    return render(request,'salesvoucher.html',)
 
 def dispathch_detail(request):
-    return render(request,'dispathch_detail.html')
+        if 't_id' in request.session:
+            t_id=request.session['t_id']
+            co=Companies.objects.get(id=t_id)
+            if request.method=="GET":
+                return render(request,'dispathch_detail.html')
+            if request.method=="POST":
+                deli_note_no=request.POST.get('delivery_note_no')
+                dis_doc_no=request.POST.get('dispatch_doc_no')
+                dis_throug=request.POST.get('dispatched_throught')
+                desti=request.POST.get('destination')
+                carrier_name_agent=request.POST.get('carrier_name_agent')
+                bill_of_lad=request.POST.get('bill_of_lading')
+                mot_vehicle_no=request.POST.get('mototr_vehicle_no')
+                date1=request.POST.get('date1')
+                date2=request.POST.get('date2')
+                disp=dispatch_detail(delivery_note_no=deli_note_no,dispatch_doc_no=dis_doc_no,dispatched_throught=dis_throug,destination=desti,carrier_name_agent=carrier_name_agent,bill_of_lading=bill_of_lad,mototr_vehicle_no=mot_vehicle_no,date1=date1,date2=date2,company=co)
+                disp.save()
+                return redirect('party_detail')
 
 def party_detail(request):
-    return render(request,'party_detail.html')
-
+    
+    if 't_id' in request.session:
+        t_id=request.session['t_id']
+        co=Companies.objects.get(id=t_id)
+        if request.method=="GET":
+            return render(request,'party_detail.html')
+        if request.method=="POST":
+            buyer_bill_to=request.POST.get('buyer_bill_to')
+            mailing_name=request.POST.get('mailing_name')
+            adress=request.POST.get('adress')
+            state=request.POST.get('state')
+            country=request.POST.get('country')
+            gst_reg_typ=request.POST.get('gst_reg_typ')
+            GSTIN=request.POST.get('GSTIN')
+            place_of_supply=request.POST.get('place_of_supply')
+            party=party_details(buyer_bill_to=buyer_bill_to,mailing_name=mailing_name,adress=adress,states=state,country=country,gst_reg_type=gst_reg_typ,gstn_un=GSTIN,place_of_supply=place_of_supply,company=co)
+            party.save()
+            return redirect('salesvoucher')
+    else:
+        return redirect('/')
 
