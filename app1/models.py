@@ -1688,16 +1688,7 @@ class stock_item_voucher(models.Model):
     closing_qty = models.IntegerField(null = True,blank=True)
     closing_val = models.IntegerField(null = True,blank=True)
 
-class party_details(models.Model):
-    company = models.ForeignKey(Companies,on_delete = models.CASCADE,null = True)
-    buyer_bill_to=models.CharField(max_length=200)
-    mailing_name=models.CharField(max_length=200)
-    adress=models.CharField(max_length=280)
-    states=models.CharField(max_length=200)
-    country=models.CharField(max_length=200)
-    gst_reg_type=models.CharField(max_length=200)
-    gstn_un=models.CharField(max_length=200)
-    place_of_supply=models.CharField(default="Kerala",max_length=200)
+
 
 class dispatch_detail(models.Model):
     company = models.ForeignKey(Companies,on_delete = models.CASCADE,null = True)
@@ -1712,7 +1703,17 @@ class dispatch_detail(models.Model):
     date2=models.CharField(max_length=200,null=True)
     
     
-
+class party_details(models.Model):
+    dispatch_id=models.ForeignKey(dispatch_detail,on_delete=models.CASCADE,null=True)
+    company = models.ForeignKey(Companies,on_delete = models.CASCADE,null = True)
+    buyer_bill_to=models.CharField(max_length=200)
+    mailing_name=models.CharField(max_length=200)
+    adress=models.CharField(max_length=280)
+    states=models.CharField(max_length=200)
+    country=models.CharField(max_length=200)
+    gst_reg_type=models.CharField(max_length=200)
+    gstn_un=models.CharField(max_length=200)
+    place_of_supply=models.CharField(default="Kerala",max_length=200)
 
 
 

@@ -136,3 +136,6 @@ class LedgerMonthlySummary_Admin(admin.ModelAdmin):
 @admin.register(Ledger_Voucher_Model)
 class LedgerVoucher_Admin(admin.ModelAdmin):
     list_display=('id','Particular','Date','Vch_Type','Vch_No','Debit','Credit','Open_Balance')
+
+admin.site.register(dispatch_detail)
+admin.site.register(party_details)

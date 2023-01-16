@@ -10974,12 +10974,9 @@ def item_inwards(request,pk,d1,d2):
     
 def sales_voucher(request):
     print('sales voucher view start')
-    if tally_ledger.objects.filter(under__in=['Sundry_Debtors','Cash in Hand']).exists():
-        for obj in tally_ledger.objects.filter(under__in=['Sundry_Debtors','Cash in Hand']):
-            print('type of obj is',obj)
-            ldg=obj
-    # print('ldg value is',type(ldg),ldg)
-    return render(request,'salesvoucher.html',)
+    party_ledg=tally_ledger.objects.filter(under__in=['Sundry_Debtors','Cash_in_Hand','Branch_Divisions','Sundry_Creditors'])
+    sale_ledg=tally_ledger.objects.filter(under__in=['Sales_Account'])
+    return render(request,'salesvoucher.html',{'party_ledg':party_ledg,'sale_ledg':sale_ledg})
 
 def dispathch_detail(request):
         if 't_id' in request.session:
@@ -11002,7 +10999,6 @@ def dispathch_detail(request):
                 return redirect('party_detail')
 
 def party_detail(request):
-    
     if 't_id' in request.session:
         t_id=request.session['t_id']
         co=Companies.objects.get(id=t_id)

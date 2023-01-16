@@ -54,7 +54,11 @@
                         <optgroup  label="List Of Ledger Accounts"></optgroup>
                         <option  selected disabled ></option>
                         <option value="{% url  'ledgers' %}"  >Create</option>
-                        <option value="red">Red</option>
+                        {% for pr in party_ledg  %}
+                        <option value="{{pr.mname}}">{{pr.mname}}
+                            
+                        </option>
+                        {% endfor %}
                     </select> <br> <br>
 
                     <label for="">Current Balance :</label>
@@ -68,13 +72,14 @@
                         <option  selected disabled ></option>
                         <option onchange="location = this.value;" value="{% url  'ledgers' %}"  >Create</option>
                         
-                        {% for ld in ldg  %}
-                        <option value="{{ld.under}}">{{ld.under}}
-                            
-                        </option>
+                        {% for sl in sale_ledg %}
+                        <option value="{{sl.mname}}">
+                            {{sl.mname}}
+                        </option>  
                         {% endfor %}
                             
-                        
+
+                            
                     </select> <br> <br>
 
                     <label for="">Current Balance :</label>
