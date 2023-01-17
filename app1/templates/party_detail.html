@@ -137,7 +137,7 @@
                              <label style="font-size:11px;" for="">GST Registration type</label> 
                             </div>
                             <div class="col-8">
-                                <select  class="form-control form-control-sm" name="gst_reg_typ">
+                                <select id="gst_reg_typ"  class="form-control form-control-sm" name="gst_reg_typ">
                                     <optgroup  label="Registration types"></optgroup>
                                     <option value="Unknown">Unknown</option>
                                     <option value="Composition">Composition</option>
@@ -152,7 +152,7 @@
                                <label for="">GSTIN/UN</label> 
                             </div>
                             <div class="col-8">
-                                <input class="form-control form-control-sm" type="text" name="GSTIN" id="">
+                                <input id="txt_gstin" class="form-control form-control-sm" type="text" name="GSTIN" id="">
                             </div>
                         </div>
                         <div class="form-group row">
@@ -228,6 +228,17 @@
             select.appendChild(option);
         });
     });
-    
+    var gstreg=document.getElementById("gst_reg_typ")
+    var txt_gsti=document.getElementById("txt_gstin")
+    gstreg.addEventListener("change",function(){
+        if (gstreg.value=="Consumer" || gstreg.value=="Unregistered")
+        {
+            txt_gsti.disabled=true; 
+        }else{
+            txt_gsti.disabled=false; 
+        }
+    })
+
+
 </script>
 {% endblock %}

@@ -50,10 +50,10 @@
                     <input type="text"> <br><br> <br>
                     <label for="">Party A/C name :</label>
                     &nbsp;&nbsp;&nbsp;
-                    <select style="width: 250px;height: 30px;" name="party_ac_name" onchange="location = this.value;">
+                    <select id="myselect" style="width: 250px;height: 30px;" name="party_ac_name" onchange="goToLink()" >
                         <optgroup  label="List Of Ledger Accounts"></optgroup>
                         <option  selected disabled ></option>
-                        <option value="{% url  'ledgers' %}"  >Create</option>
+                        <option  value="Create"  >Create</option>
                         {% for pr in party_ledg  %}
                         <option value="{{pr.mname}}">{{pr.mname}}
                             
@@ -115,4 +115,14 @@
         </tbody>
     </table>
 </div>
+<script>
+    function goToLink() {
+    var select = document.getElementById("mySelect");
+    var v= select.value;
+    console.log(v);
+    if (v == "Create") {
+        window.location.href = "{% url  'ledgers' %}";
+    }
+}
+</script>
 {% endblock %}
