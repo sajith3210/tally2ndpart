@@ -67,10 +67,10 @@
 
                     <label for="">Sales ledger :</label>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                      <select  style="width: 250px;height: 30px;" name="sale_ledger" >
+                      <select id="myselect2" onchange="goToLink()" style="width: 250px;height: 30px;" name="sale_ledger" >
                         <optgroup  label="List Of Ledger Accounts"></optgroup>
                         <option  selected disabled ></option>
-                        <option onchange="location = this.value;" value="{% url  'ledgers' %}"  >Create</option>
+                        <option >Create</option>
                         
                         {% for sl in sale_ledg %}
                         <option value="{{sl.mname}}">
@@ -116,13 +116,19 @@
     </table>
 </div>
 <script>
-    function goToLink() {
-    var select = document.getElementById("mySelect");
-    var v= select.value;
-    console.log(v);
-    if (v == "Create") {
-        window.location.href = "{% url  'ledgers' %}";
+    
+    function goToLink(){
+            var sel = document.getElementById("myselect");
+            var sel2= document.getElementById("myselect2");
+            var a = sel.value;
+            var b = sel2.value;
+            console.log(a);
+            if(a=="Create"){
+                window.location.href="{% url 'ledgers' %}"
+            }
+            if(b=="Create"){
+                window.location.href="{% url 'ledgers' %}"
+            }
     }
-}
 </script>
 {% endblock %}
