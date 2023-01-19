@@ -11019,3 +11019,5 @@ def party_detail(request):
     else:
         return redirect('/')
 
+def new_ledger():
+    pass
