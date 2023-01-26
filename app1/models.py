@@ -1688,7 +1688,15 @@ class stock_item_voucher(models.Model):
     closing_qty = models.IntegerField(null = True,blank=True)
     closing_val = models.IntegerField(null = True,blank=True)
 
+class sales_voucher(models.Model):
+    party_ac_name=models.CharField(max_length=200)
+    current_bal_party_ac=models.IntegerField()
+    sales_ledger=models.CharField(max_length=200)
 
+class sales_voucher_invoice(models.Model):
+    bill_no=models.IntegerField()
+    name_of_item=models.CharField(max_length=200)
+    party_ac_name=models.ForeignKey(sales_voucher,on_delete=models.CASCADE)
 
 class dispatch_detail(models.Model):
     company = models.ForeignKey(Companies,on_delete = models.CASCADE,null = True)
