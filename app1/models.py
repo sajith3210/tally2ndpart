@@ -1723,7 +1723,15 @@ class party_details(models.Model):
     gstn_un=models.CharField(max_length=200)
     place_of_supply=models.CharField(default="Kerala",max_length=200)
 
-
-
+class sales_invoice(models.Model):
+    company = models.ForeignKey(Companies,on_delete = models.CASCADE,null = True)
+    dispatch_id=models.ForeignKey(dispatch_detail,on_delete=models.CASCADE,null=True)
+    party_detail_id=models.ForeignKey(party_details,on_delete=models.CASCADE,null=True)
+    inv_num=models.FileField(null=True,blank=True)
+    name_of_item=models.CharField(max_length=200)
+    quantity=models.FileField(null=True,blank=True)
+    rate=models.FileField(null=True,blank=True)
+    per=models.FileField(null=True,blank=True)
+    amount=models.FileField(null=True,blank=True)
     
 

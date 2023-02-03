@@ -10974,9 +10974,10 @@ def item_inwards(request,pk,d1,d2):
     
 def sales_voucher(request):
     print('sales voucher view start')
+    stock_items=stock_itemcreation.objects.all()
     party_ledg=tally_ledger.objects.filter(under__in=['Sundry_Debtors','Cash_in_Hand','Branch_Divisions','Sundry_Creditors'])
     sale_ledg=tally_ledger.objects.filter(under__in=['Sales_Account'])
-    return render(request,'salesvoucher.html',{'party_ledg':party_ledg,'sale_ledg':sale_ledg})
+    return render(request,'salesvoucher.html',{'party_ledg':party_ledg,'sale_ledg':sale_ledg,'stock_items':stock_items})
 
 def dispathch_detail(request):
         if 't_id' in request.session:

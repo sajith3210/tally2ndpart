@@ -2,38 +2,50 @@
 {% block body %}
 {% load static %}
 <style>
-    * {
-        color: black;
-    }
+ 
 
     .main-head {
-        background-color: aqua;
-        color: black;
+        background-color: #70c5c5;
+        color: white;
         font-size: medium;
         padding: 2px;
 
     }
 
     .main-color {
-        background-color: bisque;
+        background-color: rgba(0,0,0,0.2);
+        color: white;
+
     }
 
     nav-item {
-        color: black;
+        color: white;
     }
-    select  option  {
-        background-color: rgb(255 0 0 / 14%);
-        color: black;
+    select{
+        background-color: rgba(0,0,0,0.2);  
+        color: white;
     }
-    select option:active ,section option:focus, section option:hover ,section option:checked{
-        background-color: rgb(255 0 0 / 14%);
-        color: black;
+    select optgroup{
+        background-color: rgb(22 244 255 / 20%);  
+        color: white;  
     }
+    /* select  option  {
+        background-color: rgba(0,0,0,0.2);
+        color: white; 
+    } */
+    /* select option:active ,section option:focus, section option:hover ,section option:checked{
+        background-color: rgba(0,0,0,0.2);
+        color: white; 
+    } */
     .form-control,
     .form-control:focus {
         background-color: rgb(255 0 0 / 14%);
-        color: black;
+        color:white;
         
+    }
+    input[type="text"]{
+        background-color: rgba(0,0,0,0.2);
+        color: white; 
     }
 </style>
 <div class="container main-color">
@@ -107,11 +119,24 @@
         <thead>
             <th><strong>Name of item</strong> </th>
             <th><strong>Quantity</strong></th>
-            <th><strong>Rate</strong> <i style="color: black;">Per</i> </th>
+            <th><strong>Rate</strong> <i style="color:white;">Per</i> </th>
             <th><strong>Amount</strong></th>
         </thead>
         <tbody>
-            <tr></tr>
+            <tr>   
+                <td>                  
+                <select id="myselect3" onchange="goToLink()" style="width: 250px;height: 30px;" name="sale_ledger" >
+                <optgroup  label="Endlist"></optgroup>
+                <option  selected disabled ></option>
+                <option >Create</option>
+                
+                {% for st in stock_items %}
+                <option value="{{st.name}}">
+                    {{st.name}}
+                </option>  
+                {% endfor %}
+            </td> 
+            </tr>
         </tbody>
     </table>
 </div>
@@ -120,14 +145,19 @@
     function goToLink(){
             var sel = document.getElementById("myselect");
             var sel2= document.getElementById("myselect2");
+            var sel3= document.getElementById("myselect3");
             var a = sel.value;
             var b = sel2.value;
+            var c = sel3.value;
             console.log(a);
             if(a=="Create"){
                 window.location.href="{% url 'ledgers' %}"
             }
             if(b=="Create"){
                 window.location.href="{% url 'ledgers' %}"
+            }
+            if(c=="Create"){
+                window.location.href="{% url 'stock_items_creation' %}"
             }
     }
 </script>
