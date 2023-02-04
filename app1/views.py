@@ -11020,5 +11020,5 @@ def party_detail(request):
     else:
         return redirect('/')
 
-def new_ledger():
-    pass
+def item_allocation(request):
+    return render(request,'item_allocation.html')
