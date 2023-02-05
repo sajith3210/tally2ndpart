@@ -9,16 +9,31 @@
         <div class="card-body">    
                     <p>Item Allocations for : <strong></strong> </p>
                     <hr>
+                    <table class="table table-sm">
                     <thead>
                         <tr>
-                            <td>Location</td>
-                            <td>Quantity</td>
-                            <td>Rate</td>
-                            <td>Per</td>
-                            <td>Amount</td>
+                            <th>Location</th>
+                            <th>Quantity</th>
+                            <th>Rate</th>
+                            <th>Per</th>
+                            <th>Amount</th>
                         </tr>
                     </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                            <select class="form-control form-control-sm" id="myselect" style="width: 120px;height: 30px;" name="party_ac_name" onchange="goToLink()" >
+                            <optgroup  label="List Of Locations"></optgroup>
 
+                            </select>
+                            </td>
+                            <td><input class="form-control form-control-sm"  size="3"   type="number" name="auantity" id=""></td>
+                            <td><input class="form-control form-control-sm" size="3" type="number" name="rate" id=""></td>
+                            <td><input class="form-control form-control-sm" size="3" type="number" name="per" id=""></td>
+                            <td><input class="form-control form-control-sm" size="3" type="number" name="amount" id=""></td>
+                        </tr>
+                    </tbody>
+                </table>
         </div>
     </div>
 </div>
