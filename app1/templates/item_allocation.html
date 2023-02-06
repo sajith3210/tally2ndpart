@@ -7,9 +7,9 @@
 <div class="container">
     <div class="card">
         <div class="card-body">    
-                    <p>Item Allocations for : <strong></strong> </p>
+                    <p>Item Allocations for : <strong></strong> <button id="additem" class="btn btn-md btn-primary">Add item</button> </p>
                     <hr>
-                    <table class="table table-sm">
+                    <table id="mytable" class="table table-sm">
                     <thead>
                         <tr>
                             <th>Location</th>
@@ -27,10 +27,10 @@
 
                             </select>
                             </td>
-                            <td><input class="form-control form-control-sm"  size="3"   type="number" name="auantity" id=""></td>
-                            <td><input class="form-control form-control-sm" size="3" type="number" name="rate" id=""></td>
-                            <td><input class="form-control form-control-sm" size="3" type="number" name="per" id=""></td>
-                            <td><input class="form-control form-control-sm" size="3" type="number" name="amount" id=""></td>
+                            <td><input type="text"  class="form-control form-control-sm"  size="3"   type="number" name="quantity" id=""></td>
+                            <td><input type="text" class="form-control form-control-sm" size="3" type="number" name="rate" id=""></td>
+                            <td><input type="text" class="form-control form-control-sm" size="3" type="number" name="per" id=""></td>
+                            <td><input type="text" class="form-control form-control-sm" size="3" type="number" name="amount" id=""></td>
                         </tr>
                     </tbody>
                 </table>
@@ -40,4 +40,8 @@
 </div>
 <div class="md-2"></div>
 </div>
+
+<script>
+
+</script>
 {% endblock %}

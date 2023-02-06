@@ -11022,3 +11022,6 @@ def party_detail(request):
 
 def item_allocation(request):
     return render(request,'item_allocation.html')
+
+def item_allocation_add(request):
+    return render(request,'item_allocation_add.html')

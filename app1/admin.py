@@ -139,3 +139,5 @@ class LedgerVoucher_Admin(admin.ModelAdmin):
 
 admin.site.register(dispatch_detail)
 admin.site.register(party_details)
+admin.site.register(stock_itemcreation)
+admin.site.register(stock_item)
