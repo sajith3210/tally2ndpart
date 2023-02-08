@@ -6048,7 +6048,7 @@ def godown_secondary(request):
     if 't_id' in request.session:
         if request.session.has_key('t_id'):
             t_id = request.session['t_id']
-            gd=stock_item_crt.objects.filter(comp=t_id)
+            # gd=stock_item_crt.objects.filter(comp=t_id)
         else:
             return redirect('/')
         # gd=CreateGodown.objects.all()
@@ -6059,7 +6059,7 @@ def godown_secondary(request):
         company=Companies.objects.get(id=t_id)   
         gdcrt=CreateGodown(name=name,alias=alias,under_name=under_name,comp=company)
         gdcrt.save()
-    return render(request,'godown(secondary).html',{'gd':gd})
+    return render(request,'godown(secondary).html',)
 #ref
 def singlestockgroupanalysisview(request,pk):
     data1=stockgroupcreation.objects.get(id=pk)

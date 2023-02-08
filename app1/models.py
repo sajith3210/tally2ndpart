@@ -1688,15 +1688,15 @@ class stock_item_voucher(models.Model):
     closing_qty = models.IntegerField(null = True,blank=True)
     closing_val = models.IntegerField(null = True,blank=True)
 
-class sales_voucher(models.Model):
-    party_ac_name=models.CharField(max_length=200)
-    current_bal_party_ac=models.IntegerField()
-    sales_ledger=models.CharField(max_length=200)
+# class sales_voucher(models.Model):
+#     party_ac_name=models.CharField(max_length=200)
+#     current_bal_party_ac=models.IntegerField()
+#     sales_ledger=models.CharField(max_length=200)
 
-class sales_voucher_invoice(models.Model):
-    bill_no=models.IntegerField()
-    name_of_item=models.CharField(max_length=200)
-    party_ac_name=models.ForeignKey(sales_voucher,on_delete=models.CASCADE)
+# class sales_voucher_invoice(models.Model):
+#     bill_no=models.IntegerField()
+#     name_of_item=models.CharField(max_length=200)
+#     party_ac_name=models.ForeignKey(sales_voucher,on_delete=models.CASCADE)
 
 class dispatch_detail(models.Model):
     company = models.ForeignKey(Companies,on_delete = models.CASCADE,null = True)
@@ -1723,15 +1723,27 @@ class party_details(models.Model):
     gstn_un=models.CharField(max_length=200)
     place_of_supply=models.CharField(default="Kerala",max_length=200)
 
+class sales_voucher_stock_item_allocation(models.Model):
+    item_name=models.CharField(max_length=200)
+    location=models.CharField(max_length=200)
+    quantity=models.FileField(null=True,blank=True)
+    rate=models.FileField(null=True,blank=True)
+    per=models.FileField(null=True,blank=True)
+    amount=models.FileField(null=True,blank=True)
+
 class sales_invoice(models.Model):
+    sales_item_allocation= models.ForeignKey(sales_voucher_stock_item_allocation,on_delete = models.CASCADE,null = True)
     company = models.ForeignKey(Companies,on_delete = models.CASCADE,null = True)
     dispatch_id=models.ForeignKey(dispatch_detail,on_delete=models.CASCADE,null=True)
     party_detail_id=models.ForeignKey(party_details,on_delete=models.CASCADE,null=True)
-    inv_num=models.FileField(null=True,blank=True)
+    inv_num=models.IntegerField(null=True,blank=True)
+    date=models.IntegerField(null=True,blank=True)
     name_of_item=models.CharField(max_length=200)
     quantity=models.FileField(null=True,blank=True)
     rate=models.FileField(null=True,blank=True)
     per=models.FileField(null=True,blank=True)
     amount=models.FileField(null=True,blank=True)
+
+
     
 
