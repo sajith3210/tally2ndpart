@@ -11025,3 +11025,6 @@ def item_allocation(request):
 
 def item_allocation_add(request):
     return render(request,'item_allocation_add.html')
+
+def sales_allocation_stock(request):
+    return render(request,'sales_allocation_stock_item.html')
