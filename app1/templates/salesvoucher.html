@@ -119,23 +119,28 @@
         <thead>
             <th><strong>Name of item</strong> </th>
             <th><strong>Quantity</strong></th>
-            <th><strong>Rate</strong> <i style="color:white;">Per</i> </th>
+            <th><strong>Rate</strong>  </th>
+            <th><strong>Per</strong>  </th>
             <th><strong>Amount</strong></th>
         </thead>
         <tbody>
             <tr>   
                 <td>                  
-                <select id="myselect3" onchange="goToLink()" style="width: 250px;height: 30px;" name="sale_ledger" >
+                <select id="myselect3" onchange="window.location.href=this.value;"  style="width: 250px;height: 30px;" name="sale_ledger" >
                 <optgroup  label="Endlist"></optgroup>
                 <option  selected disabled ></option>
-                <option >Create</option>
+                <option value="{% url 'stock_items_creation' %}">Create</option>
                 
                 {% for st in stock_items %}
-                <option value="{{st.name}}">
+                <option id="stock" value="{% url 'item_allocation' %}" >
                     {{st.name}}
                 </option>  
                 {% endfor %}
             </td> 
+            <td><input  type="text" name="quantity" id=""></td>
+            <td><input type="text" name="rate" id=""></td>
+            <td><input type="text" name="per" id=""></td>
+            <td><input type="text" name="Amount" id=""></td>
             </tr>
         </tbody>
     </table>
@@ -156,9 +161,15 @@
             if(b=="Create"){
                 window.location.href="{% url 'ledgers' %}"
             }
-            if(c=="Create"){
-                window.location.href="{% url 'stock_items_creation' %}"
-            }
+
     }
+    // function goToLink2(){
+    //     var sel3= document.getElementById("myselect3");
+    //     var d=sel3.value;
+    //     if (d !="Create"){
+    //         window.location.href="{% url 'item_allocation' %}"
+    //     }
+        
+    // }
 </script>
 {% endblock %}

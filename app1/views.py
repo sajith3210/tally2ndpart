@@ -5445,7 +5445,8 @@ def stock_items_creation(request):
             t_id = request.session['t_id']
         else:
             return redirect('/')
-        tally = Companies.objects.filter(id=t_id)
+        com_obj= Companies.objects.filter(id=t_id)
+        com_obj_inst= Companies.objects.get(id=t_id)
         grp=stockgroupcreation.objects.all()
         unt=unit_compound.objects.all()
         u=unit_simple.objects.all()
@@ -5465,16 +5466,19 @@ def stock_items_creation(request):
             rate=request.POST['rate']
             per=request.POST['per']
             value=request.POST['value']
+         
+
+            print("again",com_obj_inst)
             #i = stockgroupcreation.objects.get(id = under)
             
                      
             crt=stock_itemcreation(name=nm,alias=alias,under=under,units=units,batches=batches,trackdate=trackdate,expirydate=expirydate,typ_sply=typ_sply,
-            gst_applicable=gst_applicable,set_alter=set_alter,rate_of_duty=rate_of_duty,quantity=quantity,rate=rate,per=per,value=value)#,group=i )
+            gst_applicable=gst_applicable,set_alter=set_alter,rate_of_duty=rate_of_duty,quantity=quantity,rate=rate,per=per,value=value,company=com_obj_inst)#,group=i )
             crt.save()
             
             
             return redirect('load_stock_item_creation')
-        return render(request,'stock_item_creation.html',{'grp':grp,'unt':unt,'u':u,'tally':tally})
+        return render(request,'stock_item_creation.html',{'grp':grp,'unt':unt,'u':u,'com_obj':com_obj})
     return redirect('/')
     
 def stock_accuracy(request):

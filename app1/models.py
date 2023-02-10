@@ -650,7 +650,8 @@ class stockgroupcreation(models.Model):
     quantities=models.CharField(max_length=100)
 
 class stock_itemcreation(models.Model):
-    under=models.ForeignKey(Companies,on_delete=models.CASCADE,blank=True,null=True,default=0)
+    company = models.ForeignKey(Companies,on_delete = models.CASCADE,null = True)
+    under=models.CharField(max_length=100,null=True,default=0)
     name=models.CharField(max_length=100,null=True,default=0)
     alias=models.CharField(max_length=100,null=True,default=0)
     
