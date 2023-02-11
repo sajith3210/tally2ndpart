@@ -132,7 +132,7 @@
                 <option value="{% url 'stock_items_creation' %}">Create</option>
                 
                 {% for st in stock_items %}
-                <option id="stock" value="{% url 'item_allocation' %}" >
+                <option id="stock" value="{% url 'item_allocation'   %}" >
                     {{st.name}}
                 </option>  
                 {% endfor %}

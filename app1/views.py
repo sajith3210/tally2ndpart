@@ -11024,8 +11024,8 @@ def party_detail(request):
     else:
         return redirect('/')
 
-def item_allocation(request):
-    return render(request,'item_allocation.html')
+def item_allocation(request,):
+    return render(request,'item_allocation.html',)
 
 def item_allocation_add(request):
     return render(request,'item_allocation_add.html')
