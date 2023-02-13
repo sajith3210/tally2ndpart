@@ -1,6 +1,22 @@
 {% extends 'base.html' %}
 {% block body %}
 {% load static %}
+<style>
+        select{
+        background-color: rgba(0,0,0,0.2);  
+        color: white;
+    }
+    select optgroup{
+        background-color: rgb(22 244 255 / 20%);  
+        color: white;  
+    }
+    .form-control,
+    .form-control:focus {
+        background-color: rgb(255 0 0 / 14%);
+        color:white;
+        
+    }
+</style>
 <div class="row mt-5" >
 <div class="col-md-3"></div>
 <div class="col-md-7">
@@ -25,6 +41,13 @@
                             <td>
                             <select class="form-control form-control-sm" id="myselect" style="width: 120px;height: 30px;" name="party_ac_name" onchange="goToLink()" >
                             <optgroup  label="List Of Locations"></optgroup>
+                             <option value="">Create</option>
+                             
+                             {% for cr  in crt_god  %}
+                             <option value="{{cr.name}}">{{cr.name}}</option>
+                             {% endfor %}
+                                
+                             
 
                             </select>
                             </td>

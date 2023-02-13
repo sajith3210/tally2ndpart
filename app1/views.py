@@ -11025,7 +11025,15 @@ def party_detail(request):
         return redirect('/')
 
 def item_allocation(request,):
-    return render(request,'item_allocation.html',)
+    if 't_id' in request.session:
+        t_id=request.session['t_id']
+        co=Companies.objects.get(id=t_id)
+        crt_god=CreateGodown.objects.all()
+        if request.method=="GET":
+            return render(request,'item_allocation.html',{'crt_god':crt_god})
+        if request.method=="POST":
+            pass
+    
 
 def item_allocation_add(request):
     return render(request,'item_allocation_add.html')
