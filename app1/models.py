@@ -1731,9 +1731,12 @@ class sales_voucher_stock_item_allocation(models.Model):
     rate=models.FileField(null=True,blank=True)
     per=models.FileField(null=True,blank=True)
     amount=models.FileField(null=True,blank=True)
-
+    company = models.ForeignKey(Companies,on_delete = models.CASCADE,null = True)
+    dispatch_id=models.ForeignKey(dispatch_detail,on_delete=models.CASCADE,null=True)
+    party_detail_id=models.ForeignKey(party_details,on_delete=models.CASCADE,null=True)
+    
 class sales_invoice(models.Model):
-    sales_item_allocation= models.ForeignKey(sales_voucher_stock_item_allocation,on_delete = models.CASCADE,null = True)
+    sales_voucher_stock_item_allocation= models.ForeignKey(sales_voucher_stock_item_allocation,on_delete = models.CASCADE,null = True)
     company = models.ForeignKey(Companies,on_delete = models.CASCADE,null = True)
     dispatch_id=models.ForeignKey(dispatch_detail,on_delete=models.CASCADE,null=True)
     party_detail_id=models.ForeignKey(party_details,on_delete=models.CASCADE,null=True)
