@@ -43,10 +43,11 @@
         color:white;
         
     }
-    input[type="text"]{
+    input[type="text"],input[type="date"]{
         background-color: rgba(0,0,0,0.2);
         color: white; 
     }
+
 </style>
 <div class="container main-color">
     <div class="card main-color">
@@ -101,13 +102,13 @@
                 </div>
                 <div class="col-md-3"></div>
                 <div class="col-md-3">
-                    <div class="btn-group-vertical" role="group" >
-                        <button type="button" class="btn btn-info">Date</button>
-                        <button type="button" class="btn btn-info">Company</button> <br>
+                    <!-- <div class="btn-group-vertical" role="group" > -->
+                        <input type="date" name="date" id="">
+                        <!-- <button type="button" class="btn btn-info">Company</button> <br>
                         <button type="button" class="btn btn-info">Contra</button>
                         <button type="button" class="btn btn-info">Payment</button>
                         <button type="button" class="btn btn-info">Receipt</button>
-                        <button type="button" class="btn btn-info">Journal</button>
+                        <button type="button" class="btn btn-info">Journal</button> -->
                     </div>
       
                 </div>
@@ -126,13 +127,13 @@
         <tbody>
             <tr>   
                 <td>                  
-                <select id="myselect3" onchange="window.location.href=this.value;"  style="width: 250px;height: 30px;" name="sale_ledger" >
+                <select id="myselect3" onchange="window.location.href=this.value;"  style="width: 250px;height: 30px;" name="sale_vouch" >
                 <optgroup  label="Endlist"></optgroup>
                 <option  selected disabled ></option>
                 <option value="{% url 'stock_items_creation' %}">Create</option>
                 
                 {% for st in stock_items %}
-                <option id="stock" value="{% url 'item_allocation'   %}" >
+                <option id="stock" value="{% url 'item_alloc_redi'   %}" >
                     {{st.name}}
                 </option>  
                 {% endfor %}

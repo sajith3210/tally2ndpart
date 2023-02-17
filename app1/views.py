@@ -11023,14 +11023,22 @@ def party_detail(request):
             return redirect('salesvoucher')
     else:
         return redirect('/')
-
-def item_allocation(request,):
+def item_alloc_redi(request):
+    if 't_id' in request.session:
+        if request.method=="GET":
+            selected_value = request.GET.get('sale_vouch')
+            context = {
+                        'selected_value': selected_value
+                      }
+            return redirect('item_allocation', {'selected_value':selected_value})
+def item_allocation(request,selected_value):
     if 't_id' in request.session:
         t_id=request.session['t_id']
         co=Companies.objects.get(id=t_id)
         crt_god=CreateGodown.objects.all()
         if request.method=="GET":
-            return render(request,'item_allocation.html',{'crt_god':crt_god})
+            context={'selected_value':selected_value}
+            return render(request,'item_allocation.html',{'crt_god':crt_god},context)
         if request.method=="POST":
             pass
     
