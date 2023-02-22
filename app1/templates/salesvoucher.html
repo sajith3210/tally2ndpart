@@ -133,7 +133,7 @@
                 <option value="{% url 'stock_items_creation' %}">Create</option>
                 
                 {% for st in stock_items %}
-                <option id="stock" value="{% url 'item_alloc_redi'   %}" >
+                <option name="stock" id="stock" value="{% url 'item_allocation' stk_name  %}" >
                     {{st.name}}
                 </option>  
                 {% endfor %}
@@ -168,7 +168,7 @@
     //     var sel3= document.getElementById("myselect3");
     //     var d=sel3.value;
     //     if (d !="Create"){
-    //         window.location.href="{% url 'item_allocation' %}"
+    //         window.location.href="{#% url 'item_allocation' %#}"
     //     }
         
     // }

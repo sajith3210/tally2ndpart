@@ -10977,11 +10977,20 @@ def item_inwards(request,pk,d1,d2):
 
     
 def sales_voucher(request):
-    print('sales voucher view start')
-    stock_items=stock_itemcreation.objects.all()
-    party_ledg=tally_ledger.objects.filter(under__in=['Sundry_Debtors','Cash_in_Hand','Branch_Divisions','Sundry_Creditors'])
-    sale_ledg=tally_ledger.objects.filter(under__in=['Sales_Account'])
-    return render(request,'salesvoucher.html',{'party_ledg':party_ledg,'sale_ledg':sale_ledg,'stock_items':stock_items})
+    if 't_id' in request.session:
+        t_id=request.session['t_id']
+        if request.method=="GET":
+            print('sales voucher view start')
+            global stk_name 
+           
+            stk_name=request.GET.get('stock')
+            print("STk name is",stk_name)
+            stock_items=stock_itemcreation.objects.all()
+            party_ledg=tally_ledger.objects.filter(under__in=['Sundry_Debtors','Cash_in_Hand','Branch_Divisions','Sundry_Creditors'])
+            sale_ledg=tally_ledger.objects.filter(under__in=['Sales_Account'])
+            return render(request,'salesvoucher.html',{'party_ledg':party_ledg,'sale_ledg':sale_ledg,'stock_items':stock_items,'stk_name':stk_name})
+       
+
 
 def dispathch_detail(request):
         if 't_id' in request.session:
@@ -11007,6 +11016,7 @@ def party_detail(request):
     if 't_id' in request.session:
         t_id=request.session['t_id']
         co=Companies.objects.get(id=t_id)
+        last_row_disp=dispatch_detail.objects.latest('id')
         if request.method=="GET":
             return render(request,'party_detail.html')
         if request.method=="POST":
@@ -11018,7 +11028,7 @@ def party_detail(request):
             gst_reg_typ=request.POST.get('gst_reg_typ')
             GSTIN=request.POST.get('GSTIN')
             place_of_supply=request.POST.get('place_of_supply')
-            party=party_details(buyer_bill_to=buyer_bill_to,mailing_name=mailing_name,adress=adress,states=state,country=country,gst_reg_type=gst_reg_typ,gstn_un=GSTIN,place_of_supply=place_of_supply,company=co)
+            party=party_details(dispatch_id=last_row_disp,buyer_bill_to=buyer_bill_to,mailing_name=mailing_name,adress=adress,states=state,country=country,gst_reg_type=gst_reg_typ,gstn_un=GSTIN,place_of_supply=place_of_supply,company=co)
             party.save()
             return redirect('salesvoucher')
     else:
@@ -11031,14 +11041,14 @@ def item_alloc_redi(request):
                         'selected_value': selected_value
                       }
             return redirect('item_allocation', {'selected_value':selected_value})
-def item_allocation(request,selected_value):
+def item_allocation(request,stk_name):
     if 't_id' in request.session:
         t_id=request.session['t_id']
         co=Companies.objects.get(id=t_id)
         crt_god=CreateGodown.objects.all()
         if request.method=="GET":
-            context={'selected_value':selected_value}
-            return render(request,'item_allocation.html',{'crt_god':crt_god},context)
+            # context={'selected_value':selected_value}
+            return render(request,'item_allocation.html',{'crt_god':crt_god,'stk_name':stk_name},)
         if request.method=="POST":
             pass
     
