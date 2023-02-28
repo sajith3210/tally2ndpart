@@ -10990,7 +10990,7 @@ def sales_voucher(request):
             sale_ledg=tally_ledger.objects.filter(under__in=['Sales_Account'])
             return render(request,'salesvoucher.html',{'party_ledg':party_ledg,'sale_ledg':sale_ledg,'stock_items':stock_items,'stk_name':stk_name})
        
-
+                 
 
 def dispathch_detail(request):
         if 't_id' in request.session:
