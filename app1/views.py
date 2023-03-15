@@ -11041,7 +11041,7 @@ def item_alloc_redi(request):
                         'selected_value': selected_value
                       }
             return redirect('item_allocation', {'selected_value':selected_value})
-def item_allocation(request,stk_name):
+def item_allocation(request,):
     if 't_id' in request.session:
         t_id=request.session['t_id']
         co=Companies.objects.get(id=t_id)
