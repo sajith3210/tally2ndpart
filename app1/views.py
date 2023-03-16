@@ -11041,14 +11041,15 @@ def item_alloc_redi(request):
                         'selected_value': selected_value
                       }
             return redirect('item_allocation', {'selected_value':selected_value})
-def item_allocation(request,):
+def item_allocation(request,pk):
     if 't_id' in request.session:
         t_id=request.session['t_id']
+        stock_it=stock_itemcreation.objects.get(id=pk)
         co=Companies.objects.get(id=t_id)
         crt_god=CreateGodown.objects.all()
         if request.method=="GET":
             # context={'selected_value':selected_value}
-            return render(request,'item_allocation.html',{'crt_god':crt_god,'stk_name':stk_name},)
+            return render(request,'item_allocation.html',{'crt_god':crt_god,'stock_it':stock_it},)
         if request.method=="POST":
             pass
     

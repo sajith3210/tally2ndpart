@@ -17,15 +17,15 @@
         
     }
 </style>
-<h1>{{stk_name)}}</h1>
+<!-- <h1>{{stock_it.name}#}</h1> -->
 <div class="row mt-5" >
 <div class="col-md-3"></div>
 <div class="col-md-7">
 <div class="container">
     <div class="card">
         <div class="card-body">  
-           <h1 style="background-color: black;">{{selected_value}}  </h1> 
-                    <p>Item Allocations for : {{string_value}} <strong></strong> <button id="additem" class="btn btn-md btn-primary">Add item</button> </p>
+           <h1 style="background-color: hsl(0, 0%, 0%);">{{selected_value}}  </h1> 
+                    <p>Item Allocations for : <strong style="font-size: medium;">{{stock_it.name}}</strong> <strong></strong> <button id="additem" class="btn btn-md btn-primary">Add item</button> </p>
                     <hr>
                     <table id="mytable" class="table table-sm">
                     <thead>
@@ -55,7 +55,7 @@
                             </td>
                             <td><input type="text"  class="form-control form-control-sm"  size="3"   type="number" name="quantity" id=""></td>
                             <td><input type="text" class="form-control form-control-sm" size="3" type="number" name="rate" id=""></td>
-                            <td><input type="text" class="form-control form-control-sm" size="3" type="number" value="NOS" name="per" id=""></td>
+                            <td><input type="text" class="form-control form-control-sm" size="3" type="number" value="{{stock_it.units}}" name="per" id=""></td>
                             <td><input type="text" class="form-control form-control-sm" size="3" type="number" name="amount" id=""></td>
                             <td><a href="#" class="btn btn-sm btn-success">Save</a>
                                 <a href="#" class="btn btn-sm btn-success">Edit</a>
