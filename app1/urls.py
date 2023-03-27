@@ -682,7 +682,7 @@ urlpatterns = [
     path('item_alloc_redi/',views.item_alloc_redi,name='item_alloc_redi'),
 
     path('item_allocation/<int:pk>',views.item_allocation,name='item_allocation'),
-    path('item_allocation_add/',views.item_allocation_add,name='item_allocation_add'),
+    path('item_allocation_add/<int:pk>/',views.item_allocation_add,name='item_allocation_add'),
     path('sales_allocation_stock/',views.sales_allocation_stock,name='sales_allocation_stock'),
     # path('new_ledger/',views.new_ledger,name='new_ledger'),
     path(r'^media/(?P<path>.*)$', serve,{'document_root': settings.MEDIA_ROOT}),

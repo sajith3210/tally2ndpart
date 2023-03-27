@@ -10982,9 +10982,12 @@ def sales_voucher(request):
         if request.method=="GET":
             print('sales voucher view start')
             global stk_name 
-           
+            
             stk_name=request.GET.get('stock')
             print("STk name is",stk_name)
+            billno=request.GET.get('billno')
+            
+            print("STk bill no is",billno)
             stock_items=stock_itemcreation.objects.all()
             party_ledg=tally_ledger.objects.filter(under__in=['Sundry_Debtors','Cash_in_Hand','Branch_Divisions','Sundry_Creditors'])
             sale_ledg=tally_ledger.objects.filter(under__in=['Sales_Account'])
@@ -11041,21 +11044,55 @@ def item_alloc_redi(request):
                         'selected_value': selected_value
                       }
             return redirect('item_allocation', {'selected_value':selected_value})
+from django.urls import reverse
 def item_allocation(request,pk):
     if 't_id' in request.session:
         t_id=request.session['t_id']
+        co=Companies.objects.get(id=t_id)
+        
         stock_it=stock_itemcreation.objects.get(id=pk)
         co=Companies.objects.get(id=t_id)
         crt_god=CreateGodown.objects.all()
-        if request.method=="GET":
+        sl_co=sales_voucher_stock_item_allocation.objects.filter(company=t_id,item_name=stock_it.name)
+        sale_stock_all=sales_voucher_stock_item_allocation.objects.all()
+        if request.method=="GET": 
+            print("slooooooo",sl_co)
             # context={'selected_value':selected_value}
-            return render(request,'item_allocation.html',{'crt_god':crt_god,'stock_it':stock_it},)
+            return render(request,'item_allocation.html',{'crt_god':crt_god,'stock_it':stock_it,'sl':sl_co,'sale_stock_all':sale_stock_all},)
         if request.method=="POST":
-            pass
-    
+            itm_nm=request.POST.get("item_name")
+            loc=request.POST.get("location")
+            qua=request.POST.get("quantity")
+            rat=request.POST.get("rate")
+            pe=request.POST.get("per")
+            am=request.POST.get("amount")
+            sal=sales_voucher_stock_item_allocation(item_name=itm_nm,location=loc,quantity=qua,rate=rat,per=pe,amount=am,company=co)
+            sal.save()
+            
+            print("success this")
+            new_url = reverse('item_allocation', kwargs={'pk': pk})
+            return redirect(new_url)
 
-def item_allocation_add(request):
-    return render(request,'item_allocation_add.html')
-
+def item_allocation_add(request,pk):
+    if 't_id' in request.session:
+        t_id=request.session['t_id']
+        co=Companies.objects.get(id=t_id)
+        crt_god=CreateGodown.objects.all()
+        stock_it=stock_itemcreation.objects.get(id=pk)
+        if request.method=="GET": 
+            return render(request,'item_allocation_add.html',{'crt_god':crt_god,'stock_it':stock_it})
+        if request.method=="POST":
+            itm_nm=request.POST.get("item_name")
+            loc=request.POST.get("location")
+            qua=request.POST.get("quantity")
+            rat=request.POST.get("rate")
+            pe=request.POST.get("per")
+            am=request.POST.get("amount")
+            sal=sales_voucher_stock_item_allocation(item_name=itm_nm,location=loc,quantity=qua,rate=rat,per=pe,amount=am,company=co)
+            sal.save()
+            print("success this")
+            new_url = reverse('item_allocation', kwargs={'pk': pk})
+            return redirect(new_url)
+        
 def sales_allocation_stock(request):
     return render(request,'sales_allocation_stock_item.html')

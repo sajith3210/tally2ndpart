@@ -1727,13 +1727,13 @@ class party_details(models.Model):
 class sales_voucher_stock_item_allocation(models.Model):
     item_name=models.CharField(max_length=200)
     location=models.CharField(max_length=200)
-    quantity=models.FileField(null=True,blank=True)
-    rate=models.FileField(null=True,blank=True)
-    per=models.FileField(null=True,blank=True)
-    amount=models.FileField(null=True,blank=True)
+    quantity=models.IntegerField(null=True,blank=True)
+    rate=models.IntegerField(null=True,blank=True)
+    per=models.CharField(max_length=100, null=True,blank=True)
+    amount=models.IntegerField(null=True,blank=True)
     company = models.ForeignKey(Companies,on_delete = models.CASCADE,null = True)
-    dispatch_id=models.ForeignKey(dispatch_detail,on_delete=models.CASCADE,null=True)
-    party_detail_id=models.ForeignKey(party_details,on_delete=models.CASCADE,null=True)
+    dispatch_id=models.ForeignKey(dispatch_detail,on_delete=models.CASCADE,null=True,blank=True)
+    party_detail_id=models.ForeignKey(party_details,on_delete=models.CASCADE,null=True,blank=True)
     
 class sales_invoice(models.Model):
     sales_voucher_stock_item_allocation= models.ForeignKey(sales_voucher_stock_item_allocation,on_delete = models.CASCADE,null = True)
@@ -1743,10 +1743,10 @@ class sales_invoice(models.Model):
     inv_num=models.IntegerField(null=True,blank=True)
     date=models.IntegerField(null=True,blank=True)
     name_of_item=models.CharField(max_length=200)
-    quantity=models.FileField(null=True,blank=True)
-    rate=models.FileField(null=True,blank=True)
-    per=models.FileField(null=True,blank=True)
-    amount=models.FileField(null=True,blank=True)
+    quantity=models.IntegerField(null=True,blank=True)
+    rate=models.IntegerField(null=True,blank=True)
+    per=models.CharField(max_length=100, null=True,blank=True)
+    amount=models.IntegerField(null=True,blank=True)
 
 
     

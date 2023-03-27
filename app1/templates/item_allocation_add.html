@@ -9,16 +9,25 @@
             <div class="card ml-5">
                 <div class="card-body">
                     <form class="" action="" method="post">
+                        {% csrf_token %}
+                        <input hidden type="text" name="item_name" id="" value="{{stock_it.name}}">
                         <div class="form-group row">
                             <div class="col">
                                 <label for="">Location</label>
                             </div>
                             <div class="col-8">
-                                <select class=" form-control" id="myselect" style="width: 120px;height: 30px;"
-                                    name="location" onchange="goToLink()">
-                                    <optgroup label="List Of Locations"></optgroup>
-
-                                </select>
+                                <select class="form-control form-control-sm" id="myselect" style="width: 120px;height: 30px;" name="location" onchange="goToLink();" >
+                                    <optgroup  label="List Of Locations"></optgroup>
+                                     <option value="Create">Create</option>
+                                     <option value="" selected></option>
+                                     {% for cr  in crt_god  %}
+                                     <option name="" value="{{cr.name}}">{{cr.name}}</option>
+                                     
+                                     {% endfor %}
+                                        
+                                     
+        
+                                    </select>
                             </div>
                         </div> <br>
                         <div class="form-group row">
@@ -85,6 +94,16 @@
 
     document.getElementById("amount").value = result;
   }
+
+  function goToLink(){
+            var sel = document.getElementById("myselect");
+            var a = sel.value;
+            console.log(a);
+            if(a=="Create"){
+                window.location.href="{% url 'godown_secondary' %}"
+            }
+         
+        }
 </script>
 
 
