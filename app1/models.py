@@ -1724,6 +1724,23 @@ class party_details(models.Model):
     gstn_un=models.CharField(max_length=200)
     place_of_supply=models.CharField(default="Kerala",max_length=200)
 
+class sales_invoice(models.Model):
+    company = models.ForeignKey(Companies,on_delete = models.CASCADE,null = True)
+    dispatch_id=models.ForeignKey(dispatch_detail,on_delete=models.CASCADE,null=True)
+    party_detail_id=models.ForeignKey(party_details,on_delete=models.CASCADE,null=True)
+    inv_num=models.IntegerField(null=True,blank=True)
+    date=models.IntegerField(null=True,blank=True,)
+    party_ac_name=models.CharField(max_length=200,default='',null=True,blank=True)
+    party_ac_current_balance=models.IntegerField(null=True,blank=True,default=0)
+    sales_ledger=models.CharField(max_length=200,default='')
+    sales_ledger_ac_name=models.IntegerField(null=True,blank=True,default=0)
+    name_of_item=models.CharField(max_length=200,default='')
+    quantity=models.IntegerField(null=True,blank=True)
+    rate=models.IntegerField(null=True,blank=True)
+    per=models.CharField(max_length=100, null=True,blank=True)
+    amount=models.IntegerField(null=True,blank=True)
+
+
 class sales_voucher_stock_item_allocation(models.Model):
     item_name=models.CharField(max_length=200)
     location=models.CharField(max_length=200)
@@ -1731,22 +1748,12 @@ class sales_voucher_stock_item_allocation(models.Model):
     rate=models.IntegerField(null=True,blank=True)
     per=models.CharField(max_length=100, null=True,blank=True)
     amount=models.IntegerField(null=True,blank=True)
+    sales_invoice_id=models.ForeignKey(sales_invoice,on_delete=models.CASCADE,null=True)
     company = models.ForeignKey(Companies,on_delete = models.CASCADE,null = True)
     dispatch_id=models.ForeignKey(dispatch_detail,on_delete=models.CASCADE,null=True,blank=True)
     party_detail_id=models.ForeignKey(party_details,on_delete=models.CASCADE,null=True,blank=True)
     
-class sales_invoice(models.Model):
-    sales_voucher_stock_item_allocation= models.ForeignKey(sales_voucher_stock_item_allocation,on_delete = models.CASCADE,null = True)
-    company = models.ForeignKey(Companies,on_delete = models.CASCADE,null = True)
-    dispatch_id=models.ForeignKey(dispatch_detail,on_delete=models.CASCADE,null=True)
-    party_detail_id=models.ForeignKey(party_details,on_delete=models.CASCADE,null=True)
-    inv_num=models.IntegerField(null=True,blank=True)
-    date=models.IntegerField(null=True,blank=True)
-    name_of_item=models.CharField(max_length=200)
-    quantity=models.IntegerField(null=True,blank=True)
-    rate=models.IntegerField(null=True,blank=True)
-    per=models.CharField(max_length=100, null=True,blank=True)
-    amount=models.IntegerField(null=True,blank=True)
+
 
 
     

@@ -417,7 +417,7 @@ urlpatterns = [
     path('querystockview/<int:pk>',views.querystockview,name='querystockview'),
     path('stockgroupanalysisview',views.stockgroupanalysisview,name='stockgroupanalysisview'),
 
-    # noufal 
+    
     path('createledgerviews',views.createledgerviews,name="createledgerviews"),
     path('ledgercreate',views.ledgercreate,name="ledgercreate"),
     path('selectledgerpage',views.selectledgerpage,name="selectledgerpage"),
@@ -679,7 +679,7 @@ urlpatterns = [
     path('salesvoucher/',views.sales_voucher,name='salesvoucher'),
     path('dispathch_detail/',views.dispathch_detail,name='dispathch_detail'),
     path('party_detail/',views.party_detail,name='party_detail'),
-    path('item_alloc_redi/',views.item_alloc_redi,name='item_alloc_redi'),
+    # path('item_alloc_redi/',views.item_alloc_redi,name='item_alloc_redi'),
 
     path('item_allocation/<int:pk>',views.item_allocation,name='item_allocation'),
     path('item_allocation_add/<int:pk>/',views.item_allocation_add,name='item_allocation_add'),

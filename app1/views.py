@@ -11036,14 +11036,14 @@ def party_detail(request):
             return redirect('salesvoucher')
     else:
         return redirect('/')
-def item_alloc_redi(request):
-    if 't_id' in request.session:
-        if request.method=="GET":
-            selected_value = request.GET.get('sale_vouch')
-            context = {
-                        'selected_value': selected_value
-                      }
-            return redirect('item_allocation', {'selected_value':selected_value})
+# def item_alloc_redi(request):
+#     if 't_id' in request.session:
+#         if request.method=="GET":
+#             selected_value = request.GET.get('sale_vouch')
+#             context = {
+#                         'selected_value': selected_value
+#                       }
+#             return redirect('item_allocation', {'selected_value':selected_value})
 from django.urls import reverse
 def item_allocation(request,pk):
     if 't_id' in request.session:
