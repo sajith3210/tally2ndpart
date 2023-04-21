@@ -118,6 +118,37 @@
             </div>
         </div>
     </div>
+    <div class="container ">
+    <div class="row">
+        <div class="col-md-12 d-flex justify-content-start">
+            <table class="table">
+                <tr>
+                   
+                    
+                    <th>
+                        <label style="font-size:20px;" for="">Item</label>
+                        <select id="myselect3" onchange="window.location.href=this.value;"  style="width: 250px;height: 30px;" name="sale_vouch" >
+                            <optgroup  label="Endlist"></optgroup>
+                            <option  selected disabled ></option>
+                            <option value="{% url 'stock_items_creation' %}">Create</option>
+                            
+                            {% for st in stock_items %}
+                            <option name="stock" id="stock" value="{% url 'item_allocation' st.id  %}" >
+                                {{st.name}}
+                            </option>  
+                            {% endfor %}
+                           </select>
+                           <a href="" class="  btn btn-sm btn-success ">Add item allocate</a>
+                    </th>
+                    <th></th>
+                    <!-- <td><a href="" class="mb-3 btn btn-success ">Add item allocate</a></td> -->
+                </tr>
+            
+        </table>
+        </div>
+    </div>
+</div>
+   <div class="container">
     <table class="table">
         <thead>
             <th><strong>Name of item</strong> </th>
@@ -147,6 +178,7 @@
             </tr>
         </tbody>
     </table>
+</div>
 </div>
 <script>
     
