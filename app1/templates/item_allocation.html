@@ -28,19 +28,13 @@
                 <div class="card-body">
                     <h1 style="background-color: hsl(0, 0%, 0%);">{{selected_value}} </h1>
 
-                    {% if sl %}
                     <p>Item Allocations for : <strong style="font-size: medium;">{{stock_it.name}}</strong>
-                        <strong></strong> <a href="{% url 'item_allocation_add' stock_it.id %}" id="additem"
-                            class="btn btn-md btn-primary">Add item</a> </p>
-
-                    {% else %}
-                    <p>Item Allocations for : <strong style="font-size: medium;">{{stock_it.name}}</strong>
-                        <strong></strong> <button disabled id="additem" class="btn btn-md btn-primary">Add item</button>
+                        <strong></strong> <a href="{% url 'item_allocation_add'  %}" id="additem"
+                            class="btn btn-md btn-primary">Add item</a>
                     </p>
-                    {% endif %}
-                    <hr>
-                    <form action="" method="post">
 
+
+                    <hr>
                         <input hidden type="text" name="item_name" id="" value="{{stock_it.name}}">
                         <table id="mytable" class="table table-sm">
                             {% csrf_token %}
@@ -54,38 +48,36 @@
                                     <th>Action</th>
                                 </tr>
                             </thead>
-                            <tbody>                          
-                                <tr>
+                            <tbody>
+
+
+
+                                {% if sales_st_it_allo %}
+                               
+                                    {% for sal_st in sales_st_it_allo %}
+                                    <tr>
+                                    <td> <input disabled type="text" value="{{sal_st.location}}"
+                                            class="form-control form-control-sm" size="3" type="number" name="location"
+                                            id="quantity"></td>
+                                    <td><input disabled value="{{sal_st.quantity}}"  class=" form-control
+                                            form-control-sm" size="3" type="number" name="quantity" id="quantity"></td>
+                                    <td><input disabled value="{{sal_st.rate}}"  class=" form-control form-control-sm"
+                                            size="3" type="number" name="rate" id="rate"></td>
+                                    <td><input disabled value="{{sal_st.per}}" type="text"
+                                            class="form-control form-control-sm" size="3" name="per" id=""></td>
+                                    <td><input disabled value="{{sal_st.amount}}" type="text"
+                                            class="form-control form-control-sm" size="3" type="number" name="amount"
+                                            id="amount"></td>
                                     <td>
-                                        <select class="form-control form-control-sm" id="myselect"
-                                            style="width: 120px;height: 30px;" name="location" onchange="goToLink()">
-                                            <optgroup label="List Of Locations"></optgroup>
-                                            <option value="">Create</option>
-                                            <option value="" selected></option>
-                                            {% for cr in crt_god %}
-                                            <option name="" value="{{cr.name}}">{{cr.name}}</option>
-
-                                            {% endfor %}
-
-
-
-                                        </select>
+                                        
+                                        <a href="{% url 'item_allocation_edit' sal_st.id %}" class="btn btn-sm btn-success">Edit</a>
+                                        <a href="{% url 'item_allocation_delete' sal_st.id %}" class="btn btn-sm btn-success">Delete</a>
                                     </td>
-                                    <td><input type="text" class="form-control form-control-sm" size="3" type="number"
-                                            name="quantity" id="quantity"></td>
-                                    <td><input type="text" class="form-control form-control-sm" size="3" type="number"
-                                            name="rate" id="rate"></td>
-                                    <td><input type="text" class="form-control form-control-sm" size="3"
-                                            value="{{stock_it.units}}" name="per" id=""></td>
-                                    <td><input type="text" class="form-control form-control-sm" size="3" type="number"
-                                            name="amount" id="amount"></td>
-                                    <td><button type="submit" class="btn btn-sm btn-success">Save</button>
-                                        <a href="#" class="btn btn-sm btn-success">Edit</a>
-                                        <a href="#" class="btn btn-sm btn-success">Delete</a>
-                                    </td>
-                                 </tr>
+                                </tr>
+                                    {% endfor %}
+                                
+                                {% endif %}
 
-               
                             </tbody>
                         </table>
                     </form>
@@ -97,24 +89,24 @@
 </div>
 
 <script>
-    // Get references to the input fields and result field
-    const rte = document.getElementById("rate");
-    const qty = document.getElementById("quantity");
-    const resultField = document.getElementById("amount");
+    // // Get references to the input fields and result field
+    // const rte = document.getElementById("rate");
+    // const qty = document.getElementById("quantity");
+    // const resultField = document.getElementById("amount");
 
-    // Add an event listener to the rte and qty to update the result field when they change
-    rte.addEventListener("input", updateResult);
-    qty.addEventListener("input", updateResult);
+    // // Add an event listener to the rte and qty to update the result field when they change
+    // rte.addEventListener("input", updateResult);
+    // qty.addEventListener("input", updateResult);
 
-    // Function to update the result field with the mul of num1 and num2
-    function updateResult() {
-        // Get the values entered in the two input fields
-        const num1 = parseFloat(rte.value) || 0; // Use 0 if value is NaN
-        const num2 = parseFloat(qty.value) || 0;
+    // // Function to update the result field with the mul of num1 and num2
+    // function updateResult() {
+    //     // Get the values entered in the two input fields
+    //     const num1 = parseFloat(rte.value) || 0; // Use 0 if value is NaN
+    //     const num2 = parseFloat(qty.value) || 0;
 
-        // Calculate the mul and set the value of the result field
-        const mul = num1 * num2;
-        resultField.value = mul;
-    }
+    //     // Calculate the mul and set the value of the result field
+    //     const mul = num1 * num2;
+    //     resultField.value = mul;
+    // }
 </script>
 {% endblock %}
