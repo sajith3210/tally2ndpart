@@ -65,12 +65,12 @@
                     <label for="">Party A/C name :</label>
                     &nbsp;&nbsp;
                     
-                    <select id="myselect" style="width: 250px;height: 30px;" name="party_ac_name" onchange="goToLink()" >
+                    <select id="myselect" style="width: 250px;height: 30px;" name="party_ac_name" onchange="window.location.href=this.value;" >
                         <optgroup  label="List Of Ledger Accounts"></optgroup>
                         <option  selected disabled ></option>
-                        <option  value="Create"  >Create</option>
+                        <option   value="{% url 'ledgers' %}"  >Create</option>
                         {% for pr in party_ledg  %}
-                        <option value="{{pr.mname}}">{{pr.mname}}
+                        <option value="{% url 'dispathch_detail' %}">{{pr.mname}}
                             
                         </option>
                         {% endfor %}

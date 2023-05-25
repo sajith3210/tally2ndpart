@@ -11013,6 +11013,9 @@ def dispathch_detail(request):
                 date2=request.POST.get('date2')
                 disp=dispatch_detail(delivery_note_no=deli_note_no,dispatch_doc_no=dis_doc_no,dispatched_throught=dis_throug,destination=desti,carrier_name_agent=carrier_name_agent,bill_of_lading=bill_of_lad,mototr_vehicle_no=mot_vehicle_no,date1=date1,date2=date2,company=co)
                 disp.save()
+                #to get last saved row and save into session
+                dis_id=dispatch_detail.objects.latest('id')
+                request.session['disp_session']=dis_id.id
                 return redirect('party_detail')
 
 def party_detail(request):
@@ -11033,6 +11036,9 @@ def party_detail(request):
             place_of_supply=request.POST.get('place_of_supply')
             party=party_details(dispatch_id=last_row_disp,buyer_bill_to=buyer_bill_to,mailing_name=mailing_name,adress=adress,states=state,country=country,gst_reg_type=gst_reg_typ,gstn_un=GSTIN,place_of_supply=place_of_supply,company=co)
             party.save()
+            #to get last saved row and save into session
+            part_id=dispatch_detail.objects.latest('id')
+            request.session['part_session']=part_id.id
             return redirect('salesvoucher')
     else:
         return redirect('/')
