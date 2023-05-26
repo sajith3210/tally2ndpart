@@ -11022,7 +11022,7 @@ def party_detail(request):
     if 't_id' in request.session:
         t_id=request.session['t_id']
         co=Companies.objects.get(id=t_id)
-        last_row_disp=dispatch_detail.objects.latest('id')
+       
         if request.method=="GET":
             return render(request,'party_detail.html')
         if request.method=="POST":
@@ -11034,10 +11034,15 @@ def party_detail(request):
             gst_reg_typ=request.POST.get('gst_reg_typ')
             GSTIN=request.POST.get('GSTIN')
             place_of_supply=request.POST.get('place_of_supply')
-            party=party_details(dispatch_id=last_row_disp,buyer_bill_to=buyer_bill_to,mailing_name=mailing_name,adress=adress,states=state,country=country,gst_reg_type=gst_reg_typ,gstn_un=GSTIN,place_of_supply=place_of_supply,company=co)
+            party=party_details(buyer_bill_to=buyer_bill_to,mailing_name=mailing_name,adress=adress,states=state,country=country,gst_reg_type=gst_reg_typ,gstn_un=GSTIN,place_of_supply=place_of_supply,company=co)
             party.save()
+            last_row_disp=dispatch_detail.objects.latest('id')
+            
+            # dispatch id from session 
+            dis_id=request.session['disp_session']
             #to get last saved row and save into session
             part_id=dispatch_detail.objects.latest('id')
+            part_id.dispatch_id=dis_id
             request.session['part_session']=part_id.id
             return redirect('salesvoucher')
     else:
