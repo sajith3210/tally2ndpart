@@ -11056,7 +11056,7 @@ def party_detail(request):
 #                       }
 #             return redirect('item_allocation', {'selected_value':selected_value})
 from django.urls import reverse
-def item_allocation(request):
+def item_allocation(request,name):
     if 't_id' in request.session:
         t_id=request.session['t_id']
         co=Companies.objects.get(id=t_id)
@@ -11067,18 +11067,17 @@ def item_allocation(request):
         # sl_co=sales_voucher_stock_item_allocation.objects.filter(company=t_id,item_name=stock_it.name)
         sale_stock_all=sales_voucher_stock_item_allocation.objects.all()
         if request.method=="GET": 
-           
             # context={'selected_value':selected_value}
-            return render(request,'item_allocation.html',{'crt_god':crt_god,'sale_stock_all':sale_stock_all,'sales_st_it_allo':sales_st_it_allo},)
+            return render(request,'item_allocation.html',{'crt_god':crt_god,'sale_stock_all':sale_stock_all,'sales_st_it_allo':sales_st_it_allo,'name':name},)
 
-def item_allocation_add(request):
+def item_allocation_add(request,name):
     if 't_id' in request.session:
         t_id=request.session['t_id']
         co=Companies.objects.get(id=t_id)
         crt_god=CreateGodown.objects.all()
         
         if request.method=="GET": 
-            return render(request,'item_allocation_add.html',{'crt_god':crt_god,})
+            return render(request,'item_allocation_add.html',{'crt_god':crt_god,'name':name})
         if request.method=="POST":
             itm_nm=request.POST.get("item_name")
             loc=request.POST.get("location")

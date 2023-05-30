@@ -28,8 +28,8 @@
                 <div class="card-body">
                     <h1 style="background-color: hsl(0, 0%, 0%);">{{selected_value}} </h1>
 
-                    <p>Item Allocations for : <strong style="font-size: medium;">{{stock_it.name}}</strong>
-                        <strong></strong> <a href="{% url 'item_allocation_add'  %}" id="additem"
+                    <p>Item Allocations for : <strong style="font-size: medium;">{{name}}</strong>
+                        <strong></strong> <a href="{% url 'item_allocation_add' name %}" id="additem"
                             class="btn btn-md btn-primary">Add item</a>
                     </p>
 
