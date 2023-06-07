@@ -64,11 +64,152 @@
                     <input name="billno" type="text"> <br><br> <br>
                     <label for="">Party A/C name :</label>
                     &nbsp;&nbsp;
-                    
-                    <select id="myselect" style="width: 250px;height: 30px;" name="party_ac_name" onchange="window.location.href=this.value;" >
+                    <!-- modal create dispathch_detail and party detail  -->
+                    <div class="modal  fade" id="myModal"  tabindex="-1" role="dialog">
+                        <div  class="modal-dialog  modal-lg" role="document">
+                          <div style="background-color:#2f516f;" class="modal-content">
+                            <div class="modal-header">
+                                <button class="close" data-dismiss="modal">&times;</button>
+                                <h4>This is the header title</h4>
+                            </div>
+                            <div class="modal-body mt-10" style="overflow: auto;">
+                                <!-- dispatch detail modal code started  -->
+                                <div class="container">
+                                    <h3 class="main-head">Party Details
+                                    </h3>
+                                    <!-- main row  -->
+                                    <div class="row mt-5">
+                                        <div class="col-md-1"></div>
+                                        <div class="col-md-10">
+                                
+                                            <div class="card main-color">
+                                                <div class="card-body">
+                                                    <strong><center style="text-decoration: underline;color: white;font-size: 25px;">Dispatch Details</center></strong>
+                                                    <!-- card divide row  -->
+                                                    <form action="" method="post">
+                                                        {% csrf_token %}
+                                                        <div class="row mt-2 form-group">
+                                                            <div class="col-md-3">
+                                                                <p>Delivery Note No(s) :</p>
+                                                                <input class="form-control form-control-sm"  type="number" name="delivery_note_no" id="">
+                                                            </div>
+                                
+                                                            <div class="col-md-6">
+                                                                <div class="form-group row">
+                                                                    <div class="col">
+                                                                        <p style="display: inline;">Dispathc Doc No(s)         :</p>
+                                                                    </div>
+                                                                    <div class="col-7">
+                                                                        <input class="form-control form-control-sm" type="number" name="dispatch_doc_no" id=""
+                                                                            style="display: inline;">
+                                                                    </div>
+                                                                    
+                                                                </div>
+                                                                <div class="form-group row">
+                                                                    <div class="col">
+                                                                        <p style="display: inline;">Dispathched through  :</p>
+                                                                    </div>
+                                                                    <div class="col-7">
+                                                                        <input class="form-control form-control-sm" type="text" name="dispatched_throught" id=""
+                                                                            style="display: inline;">
+                                                                    </div>
+                                                                    
+                                                                </div>
+                                                                <div class="form-group row">
+                                                                    <div class="col">
+                                                                        <p style="display: inline;">Destination  :</p>
+                                                                    </div>
+                                                                    <div class="col-7">
+                                                                        <input class="form-control form-control-sm" type="text" name="destination" id=""
+                                                                            style="display: inline;">
+                                                                    </div>
+                                                                    
+                                                                </div>
+                                                                <div class="form-group row">
+                                                                    <div class="col">
+                                                                        <p style="display: inline;">Carrier Name/Agent  :</p>
+                                                                    </div>
+                                                                    <div class="col-7">
+                                                                        <input class="form-control form-control-sm" type="text" name="carrier_name_agent" id=""
+                                                                            style="display: inline;">
+                                                                    </div>
+                                                                    
+                                                                </div>
+                                                                <div class="form-group row">
+                                                                    <div class="col">
+                                                                        <p style="display: inline;">Bill of Lading/LR-RR No:</p>
+                                                                    </div>
+                                                                    <div class="col-7">
+                                                                        <input class="form-control form-control-sm" type="text" name="bill_of_lading" id=""
+                                                                            style="display: inline;">
+                                                                    </div>
+                                                                    
+                                                                </div>
+                                                                <div class="form-group row">
+                                                                    <div class="col">
+                                                                        <p style="display: inline;">Motor Vehicle No:</p>
+                                                                    </div>
+                                                                    <div class="col-7">
+                                                                        <input class="form-control form-control-sm" type="text" name="mototr_vehicle_no" id=""
+                                                                            style="display: inline;">
+                                                                    </div>
+                                                                    
+                                                                </div>
+                                                            </div>
+                                
+                                                            <div class="col-md-3">
+                                                                <div class="form-group row">
+                                                                    <div class="col">
+                                                                        <p style="display: inline;">Date:</p>
+                                                                    </div>
+                                                                    <div class="col-7">
+                                                                        <input style="width:130px" class="form-control " type="date" name="date1" id=""
+                                                                            style="display: inline;">
+                                                                    </div>
+                                                                    
+                                                                </div>  <br> <br> <br><br><br><br><br><br><br>
+                                                                <div class="form-group row">
+                                                                    <div class="col">
+                                                                        <p style="display: inline;">Date:</p>
+                                                                    </div>
+                                                                    <div class="col-7">
+                                                                        <input style="width:130px" class="form-control " type="date" name="date2" id=""
+                                                                            style="display: inline;">
+                                                                    </div>
+                                                                    
+                                                                </div>  
+                                                                <div class="form-group row">
+                                                                    <div class="col-11">
+                                                                        <button class="btn btn-success btn-lg w-100" type="submit">Save</button>
+                                                                    </div>
+                                                                    <div class="col-1">
+                                                                        
+                                                                    </div>
+                                                                    
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+
+                    <!-- end modal dispathch_detail  -->
+                    <select id="myselect" style="width: 250px;height: 30px;" name="party_ac_name" onchange="goToLink();" >
                         <optgroup  label="List Of Ledger Accounts"></optgroup>
                         <option  selected disabled ></option>
-                        <option   value="{% url 'ledgers' %}"  >Create</option>
+                        <option   value="Create"  >Create</option>
                         {% for pr in party_ledg  %}
                         <option value="{% url 'dispathch_detail' %}">{{pr.mname}}
                             
@@ -198,6 +339,15 @@
             }
 
     }
+            document.getElementById("myselect").addEventListener("change", function() {
+                if (this.value !== "Create"){
+                        $('#myModal').modal({
+                        backdrop: 'static',
+                        keyboard: false
+                        }).modal('show');
+                }
+            });
+
     // function goToLink2(){
     //     var sel3= document.getElementById("myselect3");
     //     var d=sel3.value;
