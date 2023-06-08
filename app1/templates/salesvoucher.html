@@ -2,72 +2,74 @@
 {% block body %}
 {% load static %}
 <style>
- 
+.main-head {
+    background-color: #70c5c5;
+    color: white;
+    font-size: medium;
+    padding: 2px;
 
-    .main-head {
-        background-color: #70c5c5;
-        color: white;
-        font-size: medium;
-        padding: 2px;
+}
 
-    }
+.main-color {
+    background-color: rgba(0, 0, 0, 0.2);
+    color: white;
 
-    .main-color {
-        background-color: rgba(0,0,0,0.2);
-        color: white;
+}
 
-    }
+nav-item {
+    color: white;
+}
 
-    nav-item {
-        color: white;
-    }
-    select{
-        background-color: rgba(0,0,0,0.2);  
-        color: white;
-    }
-    select optgroup{
-        background-color: rgb(22 244 255 / 20%);  
-        color: white;  
-    }
-    /* select  option  {
-        background-color: rgba(0,0,0,0.2);
-        color: white; 
-    } */
-    /* select option:active ,section option:focus, section option:hover ,section option:checked{
-        background-color: rgba(0,0,0,0.2);
-        color: white; 
-    } */
-    .form-control,
-    .form-control:focus {
-        background-color: rgb(255 0 0 / 14%);
-        color:white;
-        
-    }
-    input[type="text"],input[type="date"]{
-        background-color: rgba(0,0,0,0.2);
-        color: white; 
-    }
+select {
+    background-color: rgba(0, 0, 0, 0.2);
+    color: white;
+}
 
+select optgroup {
+    background-color: rgb(22 244 255 / 20%);
+    color: white;
+}
+
+/* select  option  {
+    background-color: rgba(0,0,0,0.2);
+    color: white; 
+} */
+/* select option:active ,section option:focus, section option:hover ,section option:checked{
+    background-color: rgba(0,0,0,0.2);
+    color: white; 
+} */
+.form-control,
+.form-control:focus {
+    background-color: rgb(255 0 0 / 14%);
+    color: white;
+
+}
+
+input[type="text"],
+input[type="date"] {
+    background-color: rgba(0, 0, 0, 0.2);
+    color: white;
+}
 </style>
 <div class="container main-color">
-    <div class="card main-color">
+<div class="card main-color">
 
-        <div class="card-body">
-            <div class="row ">
-                <form action="" method="post"></form>
-                <div class="col-md-6 ">
-                    <h3 class="main-head">Accounting Voucher Creation</h3>
-                    <p style="background-color: blueviolet;display: inline; padding: 0 25px;">
-                        Sales
-                    </p>&nbsp;&nbsp;&nbsp;
-                    <label>NO</label>
-                    <input name="billno" type="text"> <br><br> <br>
-                    <label for="">Party A/C name :</label>
-                    &nbsp;&nbsp;
-                    <!-- modal create dispathch_detail and party detail  -->
-                    <div class="modal  fade" id="myModal"  tabindex="-1" role="dialog">
-                        <div  class="modal-dialog  modal-lg" role="document">
-                          <div style="background-color:#2f516f;" class="modal-content">
+    <div class="card-body">
+        <div class="row ">
+            <form action="" method="post"></form>
+            <div class="col-md-6 ">
+                <h3 class="main-head">Accounting Voucher Creation</h3>
+                <p style="background-color: blueviolet;display: inline; padding: 0 25px;">
+                    Sales
+                </p>&nbsp;&nbsp;&nbsp;
+                <label>NO</label>
+                <input name="billno" type="text"> <br><br> <br>
+                <label for="">Party A/C name :</label>
+                &nbsp;&nbsp;
+                <!-- modal create dispathch_detail and party detail  -->
+                <div class="modal  fade" id="myModal" tabindex="-1" role="dialog">
+                    <div class="modal-dialog  modal-lg" role="document">
+                        <div style="background-color:#2f516f;" class="modal-content">
                             <div class="modal-header">
                                 <button class="close" data-dismiss="modal">&times;</button>
                                 <h4>This is the header title</h4>
@@ -81,111 +83,135 @@
                                     <div class="row mt-5">
                                         <div class="col-md-1"></div>
                                         <div class="col-md-10">
-                                
+
                                             <div class="card main-color">
                                                 <div class="card-body">
-                                                    <strong><center style="text-decoration: underline;color: white;font-size: 25px;">Dispatch Details</center></strong>
+                                                    <strong>
+                                                        <center
+                                                            style="text-decoration: underline;color: white;font-size: 25px;">
+                                                            Dispatch Details</center>
+                                                    </strong>
                                                     <!-- card divide row  -->
-                                                    <form action="" method="post">
+                                                    <form action="{% url 'dispathch_detail' %}" method="post">
                                                         {% csrf_token %}
                                                         <div class="row mt-2 form-group">
                                                             <div class="col-md-3">
                                                                 <p>Delivery Note No(s) :</p>
-                                                                <input class="form-control form-control-sm"  type="number" name="delivery_note_no" id="">
+                                                                <input class="form-control form-control-sm"
+                                                                    type="number" name="delivery_note_no" id="">
                                                             </div>
-                                
+
                                                             <div class="col-md-6">
                                                                 <div class="form-group row">
                                                                     <div class="col">
-                                                                        <p style="display: inline;">Dispathc Doc No(s)         :</p>
+                                                                        <p style="display: inline;">Dispathc Doc
+                                                                            No(s) :</p>
                                                                     </div>
                                                                     <div class="col-7">
-                                                                        <input class="form-control form-control-sm" type="number" name="dispatch_doc_no" id=""
-                                                                            style="display: inline;">
+                                                                        <input class="form-control form-control-sm"
+                                                                            type="number" name="dispatch_doc_no"
+                                                                            id="" style="display: inline;">
                                                                     </div>
-                                                                    
+
                                                                 </div>
                                                                 <div class="form-group row">
                                                                     <div class="col">
-                                                                        <p style="display: inline;">Dispathched through  :</p>
+                                                                        <p style="display: inline;">Dispathched
+                                                                            through :</p>
                                                                     </div>
                                                                     <div class="col-7">
-                                                                        <input class="form-control form-control-sm" type="text" name="dispatched_throught" id=""
-                                                                            style="display: inline;">
+                                                                        <input class="form-control form-control-sm"
+                                                                            type="text" name="dispatched_throught"
+                                                                            id="" style="display: inline;">
                                                                     </div>
-                                                                    
+
                                                                 </div>
                                                                 <div class="form-group row">
                                                                     <div class="col">
-                                                                        <p style="display: inline;">Destination  :</p>
+                                                                        <p style="display: inline;">Destination :
+                                                                        </p>
                                                                     </div>
                                                                     <div class="col-7">
-                                                                        <input class="form-control form-control-sm" type="text" name="destination" id=""
+                                                                        <input class="form-control form-control-sm"
+                                                                            type="text" name="destination" id=""
                                                                             style="display: inline;">
                                                                     </div>
-                                                                    
+
                                                                 </div>
                                                                 <div class="form-group row">
                                                                     <div class="col">
-                                                                        <p style="display: inline;">Carrier Name/Agent  :</p>
+                                                                        <p style="display: inline;">Carrier
+                                                                            Name/Agent :</p>
                                                                     </div>
                                                                     <div class="col-7">
-                                                                        <input class="form-control form-control-sm" type="text" name="carrier_name_agent" id=""
-                                                                            style="display: inline;">
+                                                                        <input class="form-control form-control-sm"
+                                                                            type="text" name="carrier_name_agent"
+                                                                            id="" style="display: inline;">
                                                                     </div>
-                                                                    
+
                                                                 </div>
                                                                 <div class="form-group row">
                                                                     <div class="col">
-                                                                        <p style="display: inline;">Bill of Lading/LR-RR No:</p>
+                                                                        <p style="display: inline;">Bill of
+                                                                            Lading/LR-RR No:</p>
                                                                     </div>
                                                                     <div class="col-7">
-                                                                        <input class="form-control form-control-sm" type="text" name="bill_of_lading" id=""
+                                                                        <input class="form-control form-control-sm"
+                                                                            type="text" name="bill_of_lading" id=""
                                                                             style="display: inline;">
                                                                     </div>
-                                                                    
+
                                                                 </div>
                                                                 <div class="form-group row">
                                                                     <div class="col">
-                                                                        <p style="display: inline;">Motor Vehicle No:</p>
+                                                                        <p style="display: inline;">Motor Vehicle
+                                                                            No:</p>
                                                                     </div>
                                                                     <div class="col-7">
-                                                                        <input class="form-control form-control-sm" type="text" name="mototr_vehicle_no" id=""
-                                                                            style="display: inline;">
+                                                                        <input class="form-control form-control-sm"
+                                                                            type="text" name="mototr_vehicle_no"
+                                                                            id="" style="display: inline;">
                                                                     </div>
-                                                                    
+
                                                                 </div>
                                                             </div>
-                                
+
                                                             <div class="col-md-3">
                                                                 <div class="form-group row">
                                                                     <div class="col">
                                                                         <p style="display: inline;">Date:</p>
                                                                     </div>
                                                                     <div class="col-7">
-                                                                        <input style="width:130px" class="form-control " type="date" name="date1" id=""
+                                                                        <input style="width:130px"
+                                                                            class="form-control " type="date"
+                                                                            name="date1" id=""
                                                                             style="display: inline;">
                                                                     </div>
-                                                                    
-                                                                </div>  <br> <br> <br><br><br><br><br><br><br>
+
+                                                                </div> <br> <br> <br><br><br><br><br><br><br>
                                                                 <div class="form-group row">
                                                                     <div class="col">
                                                                         <p style="display: inline;">Date:</p>
                                                                     </div>
                                                                     <div class="col-7">
-                                                                        <input style="width:130px" class="form-control " type="date" name="date2" id=""
+                                                                        <input style="width:130px"
+                                                                            class="form-control " type="date"
+                                                                            name="date2" id=""
                                                                             style="display: inline;">
                                                                     </div>
-                                                                    
-                                                                </div>  
+
+                                                                </div>
                                                                 <div class="form-group row">
                                                                     <div class="col-11">
-                                                                        <button class="btn btn-success btn-lg w-100" type="submit">Save</button>
+                                                                        <button  data-toggle="modal" data-target="#party_modal"
+                                                                            class="btn btn-success btn-lg w-100"
+                                                                            type="button">Go to party detail
+                                                                            </button>
                                                                     </div>
                                                                     <div class="col-1">
-                                                                        
+
                                                                     </div>
-                                                                    
+
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -198,163 +224,462 @@
                                 </div>
                             </div>
                             <div class="modal-footer">
-                                
+
                             </div>
-                          </div>
                         </div>
-                      </div>
+                    </div>
+
 
 
                     <!-- end modal dispathch_detail  -->
-                    <select id="myselect" style="width: 250px;height: 30px;" name="party_ac_name" onchange="goToLink();" >
-                        <optgroup  label="List Of Ledger Accounts"></optgroup>
-                        <option  selected disabled ></option>
-                        <option   value="Create"  >Create</option>
-                        {% for pr in party_ledg  %}
-                        <option value="{% url 'dispathch_detail' %}">{{pr.mname}}
-                            
-                        </option>
-                        {% endfor %}
-                    </select> <br> <br>
-                </form>
-                    <label for="">Current Balance :</label>
-                    &nbsp;&nbsp;
-                    <input type="text" size="35"> <br> <br>
+                    <!-- start modal party detail  -->
+                    <div class="modal  fade" id="party_modal" tabindex="-1" role="dialog">
+                        <div class="modal-dialog  modal-lg" role="document">
+                            <div style="background-color:#2f516f;" class="modal-content">
+                                <div class="modal-header">
+                                    <h1></h1>
+                                    <button class="close" data-dismiss="modal">&times;</button>
+                                </div>
+                                <div class="modal-body mt-10" style="overflow: auto;">
+                                    <!-- party detail modal body detail started  -->
+                                    <div class="container">
+                                        <h3 class="main-head">Party details </h3>
+                                        <div class="row">
+                                            <div class="col-md-3"> </div>
+                                            <div class="col-md-5">
+                                                <div class="card main-color">
+                                                    <div class="card-body">
+                                                        <form action="" method="post">
+                                                            {% csrf_token %}
+                                                            <strong>
+                                                                <center style="text-decoration: underline;">Party
+                                                                    Details
+                                                                </center>
+                                                            </strong>
 
-                    <label for="">Sales ledger :</label>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                      <select id="myselect2" onchange="goToLink()" style="width: 250px;height: 30px;" name="sale_ledger" >
-                        <optgroup  label="List Of Ledger Accounts"></optgroup>
-                        <option  selected disabled ></option>
-                        <option >Create</option>
-                        
-                        {% for sl in sale_ledg %}
-                        <option value="{{sl.mname}}">
-                            {{sl.mname}}
-                        </option>  
-                        {% endfor %}
-                            
+                                                            <div class="form-group row">
+                                                                <div class="col-4">
+                                                                    <label for="">Buyer (Bill to)</label>
+                                                                </div>
+                                                                <div class="col-8">
+                                                                    <select onchange=newpage() id="myselect7"
+                                                                        class="form-control form-control-sm"
+                                                                        name="buyer_bill_to">
+                                                                        <optgroup label="List Of Ledger Accounts">
+                                                                        </optgroup>
+                                                                        <option selected disabled></option>
+                                                                        <option>Create</option>
+                                                                        <option value="#">New party</option>
+                                                                        <option value="#">Cash</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <div class="col-4">
+                                                                    <label for="">Mailing Name</label>
+                                                                </div>
+                                                                <div class="col-8">
+                                                                    <input name="mailing_name"
+                                                                        class="form-control form-control-sm"
+                                                                        type="text" name="" id="">
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <div class="col-4">
+                                                                    <label for="">Adress</label>
+                                                                </div>
+                                                                <div class="col-8">
+                                                                    <textarea class="form-control form-control-sm"
+                                                                        name="adress" id="" cols="30"
+                                                                        rows="10"></textarea>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <div class="col-4">
+                                                                    <label for="">States</label>
+                                                                </div>
+                                                                <div class="col-8">
+                                                                    <select class="form-control form-control-sm"
+                                                                        name="state">
+                                                                        <optgroup label="List Of States"></optgroup>
+                                                                        <option value="">Select State</option>
+                                                                        <option value="Andhra Pradesh">Andhra
+                                                                            Pradesh</option>
+                                                                        <option value="Arunachal Pradesh">Arunachal
+                                                                            Pradesh</option>
+                                                                        <option value="Assam">Assam</option>
+                                                                        <option value="Bihar">Bihar</option>
+                                                                        <option value="Chhattisgarh">Chhattisgarh
+                                                                        </option>
+                                                                        <option value="Goa">Goa</option>
+                                                                        <option value="Gujarat">Gujarat</option>
+                                                                        <option value="Haryana">Haryana</option>
+                                                                        <option value="Himachal Pradesh">Himachal
+                                                                            Pradesh</option>
+                                                                        <option value="Jharkhand">Jharkhand</option>
+                                                                        <option value="Karnataka">Karnataka</option>
+                                                                        <option value="Kerala">Kerala</option>
+                                                                        <option value="Madhya Pradesh">Madhya
+                                                                            Pradesh</option>
+                                                                        <option value="Maharashtra">Maharashtra
+                                                                        </option>
+                                                                        <option value="Manipur">Manipur</option>
+                                                                        <option value="Meghalaya">Meghalaya</option>
+                                                                        <option value="Mizoram">Mizoram</option>
+                                                                        <option value="Nagaland">Nagaland</option>
+                                                                        <option value="Odisha">Odisha</option>
+                                                                        <option value="Punjab">Punjab</option>
+                                                                        <option value="Rajasthan">Rajasthan</option>
+                                                                        <option value="Sikkim">Sikkim</option>
+                                                                        <option value="Tamil Nadu">Tamil Nadu
+                                                                        </option>
+                                                                        <option value="Telangana">Telangana</option>
+                                                                        <option value="Tripura">Tripura</option>
+                                                                        <option value="Uttar Pradesh">Uttar Pradesh
+                                                                        </option>
+                                                                        <option value="Uttarakhand">Uttarakhand
+                                                                        </option>
+                                                                        <option value="West Bengal">West Bengal
+                                                                        </option>
+                                                                        <option value="Andaman and Nicobar Islands">
+                                                                            Andaman and Nicobar Islands</option>
+                                                                        <option value="Chandigarh">Chandigarh
+                                                                        </option>
+                                                                        <option value="Dadra and Nagar Haveli">Dadra
+                                                                            and Nagar Haveli</option>
+                                                                        <option value="Daman and Diu">Daman and Diu
+                                                                        </option>
+                                                                        <option value="Lakshadweep">Lakshadweep
+                                                                        </option>
+                                                                        <option value="Puducherry">Puducherry
+                                                                        </option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <div class="col-4">
+                                                                    <label for="">Country</label>
+                                                                </div>
+                                                                <div class="col-8">
+                                                                    <select id="country"
+                                                                        class="form-control form-control-sm"
+                                                                        name="country">
+                                                                        <optgroup label="List Of Countries">
+                                                                        </optgroup>
 
-                            
-                    </select> <br> <br>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <div class="col-4">
+                                                                    <label style="font-size:11px;" for="">GST
+                                                                        Registration type</label>
+                                                                </div>
+                                                                <div class="col-8">
+                                                                    <select id="gst_reg_typ"
+                                                                        class="form-control form-control-sm"
+                                                                        name="gst_reg_typ">
+                                                                        <optgroup label="Registration types">
+                                                                        </optgroup>
+                                                                        <option value="Unknown">Unknown</option>
+                                                                        <option value="Composition">Composition
+                                                                        </option>
+                                                                        <option value="Consumer">Consumer</option>
+                                                                        <option value="Regular">Regular</option>
+                                                                        <option value="Unregistered">Unregistered
+                                                                        </option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <div class="col-4">
+                                                                    <label for="">GSTIN/UN</label>
+                                                                </div>
+                                                                <div class="col-8">
+                                                                    <input id="txt_gstin"
+                                                                        class="form-control form-control-sm"
+                                                                        type="text" name="GSTIN" id="">
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <div class="col-4">
+                                                                    <label for="">Place of Supply</label>
+                                                                </div>
+                                                                <div class="col-8">
+                                                                    <select class="form-control form-control-sm"
+                                                                        name="place_of_supply">
+                                                                        <optgroup label="List Of States"></optgroup>
+                                                                        <option value="Andhra Pradesh">Andhra
+                                                                            Pradesh</option>
+                                                                        <option value="Arunachal Pradesh">Arunachal
+                                                                            Pradesh</option>
+                                                                        <option value="Assam">Assam</option>
+                                                                        <option value="Bihar">Bihar</option>
+                                                                        <option value="Chhattisgarh">Chhattisgarh
+                                                                        </option>
+                                                                        <option value="Goa">Goa</option>
+                                                                        <option value="Gujarat">Gujarat</option>
+                                                                        <option value="Haryana">Haryana</option>
+                                                                        <option value="Himachal Pradesh">Himachal
+                                                                            Pradesh</option>
+                                                                        <option value="Jharkhand">Jharkhand</option>
+                                                                        <option value="Karnataka">Karnataka</option>
+                                                                        <option value="Kerala">Kerala</option>
+                                                                        <option value="Madhya Pradesh">Madhya
+                                                                            Pradesh</option>
+                                                                        <option value="Maharashtra">Maharashtra
+                                                                        </option>
+                                                                        <option value="Manipur">Manipur</option>
+                                                                        <option value="Meghalaya">Meghalaya</option>
+                                                                        <option value="Mizoram">Mizoram</option>
+                                                                        <option value="Nagaland">Nagaland</option>
+                                                                        <option value="Odisha">Odisha</option>
+                                                                        <option value="Punjab">Punjab</option>
+                                                                        <option value="Rajasthan">Rajasthan</option>
+                                                                        <option value="Sikkim">Sikkim</option>
+                                                                        <option value="Tamil Nadu">Tamil Nadu
+                                                                        </option>
+                                                                        <option value="Telangana">Telangana</option>
+                                                                        <option value="Tripura">Tripura</option>
+                                                                        <option value="Uttar Pradesh">Uttar Pradesh
+                                                                        </option>
+                                                                        <option value="Uttarakhand">Uttarakhand
+                                                                        </option>
+                                                                        <option value="West Bengal">West Bengal
+                                                                        </option>
+                                                                        <option value="Andaman and Nicobar Islands">
+                                                                            Andaman and Nicobar Islands</option>
+                                                                        <option value="Chandigarh">Chandigarh
+                                                                        </option>
+                                                                        <option value="Dadra and Nagar Haveli">Dadra
+                                                                            and Nagar Haveli</option>
+                                                                        <option value="Daman and Diu">Daman and Diu
+                                                                        </option>
+                                                                        <option value="Lakshadweep">Lakshadweep
+                                                                        </option>
+                                                                        <option value="Puducherry">Puducherry
+                                                                        </option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <div class="col-4"></div>
+                                                                <div class="col-8">
+                                                                    <button class="btn btn-lg btn-success w-75"
+                                                                        type="submit">
+                                                                        Save
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4"> </div>
+                                        </div>
+                                    </div>
+                                    <!-- party detail modal body contend end  -->
+                                </div>
+                                <div class="modal-footer">
 
-                    <label for="">Current Balance :</label>
-                    &nbsp;&nbsp;
-                    <input type="text" size="35"> <br> <br>
+                                </div>
+                            </div>
+                        </div>
 
-                </div>
-                <div class="col-md-3"></div>
-                <div class="col-md-3">
-                    <!-- <div class="btn-group-vertical" role="group" > -->
-                        <input type="date" name="date" id="">
-                        <!-- <button type="button" class="btn btn-info">Company</button> <br>
-                        <button type="button" class="btn btn-info">Contra</button>
-                        <button type="button" class="btn btn-info">Payment</button>
-                        <button type="button" class="btn btn-info">Receipt</button>
-                        <button type="button" class="btn btn-info">Journal</button> -->
                     </div>
-      
+                    <!-- end modal party detail  -->
                 </div>
+                <select id="myselect" style="width: 250px;height: 30px;" name="party_ac_name"
+                    onchange="goToLink();">
+                    <optgroup label="List Of Ledger Accounts"></optgroup>
+                    <option selected disabled></option>
+                    <option value="Create">Create</option>
+                    {% for pr in party_ledg %}
+                    <option value="{% url 'dispathch_detail' %}">{{pr.mname}}
+
+                    </option>
+                    {% endfor %}
+                </select> <br> <br>
+                </form>
+                <label for="">Current Balance :</label>
+                &nbsp;&nbsp;
+                <input type="text" size="35"> <br> <br>
+
+                <label for="">Sales ledger :</label>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <select id="myselect2" onchange="goToLink()" style="width: 250px;height: 30px;" name="sale_ledger">
+                    <optgroup label="List Of Ledger Accounts"></optgroup>
+                    <option selected disabled></option>
+                    <option>Create</option>
+
+                    {% for sl in sale_ledg %}
+                    <option value="{{sl.mname}}">
+                        {{sl.mname}}
+                    </option>
+                    {% endfor %}
+
+
+
+                </select> <br> <br>
+
+                <label for="">Current Balance :</label>
+                &nbsp;&nbsp;
+                <input type="text" size="35"> <br> <br>
 
             </div>
+            <div class="col-md-3"></div>
+            <div class="col-md-3">
+                <!-- <div class="btn-group-vertical" role="group" > -->
+                <input type="date" name="date" id="">
+                <!-- <button type="button" class="btn btn-info">Company</button> <br>
+                    <button type="button" class="btn btn-info">Contra</button>
+                    <button type="button" class="btn btn-info">Payment</button>
+                    <button type="button" class="btn btn-info">Receipt</button>
+                    <button type="button" class="btn btn-info">Journal</button> -->
+            </div>
+
         </div>
-    </div>
-    <div class="container ">
-    <div class="row">
-        <div class="col-md-12 d-flex justify-content-start">
-            <table class="table">
-                <tr>
-                   
-                    
-                    <th>
-                        <label style="font-size:20px;" for="">Item</label>
-                        <select id="myselect3" onchange="window.location.href=this.value;"  style="width: 250px;height: 30px;" name="sale_vouch" >
-                            <optgroup  label="Endlist"></optgroup>
-                            <option  selected disabled ></option>
-                            <option value="{% url 'stock_items_creation' %}">Create</option>
-                            
-                            {% for st in stock_items %}
-                            <option name="stock" id="stock" value="{% url 'item_allocation'  st.name  %}" >
-                                {{st.name}}
-                            </option>  
-                            {% endfor %}
-                           </select>
-                           <a href="" class="  btn btn-sm btn-success ">Add item allocate</a>
-                    </th>
-                    <th></th>
-                    <!-- <td><a href="" class="mb-3 btn btn-success ">Add item allocate</a></td> -->
-                </tr>
-            
-        </table>
-        </div>
+
     </div>
 </div>
-   <div class="container">
-    <table class="table">
-        <thead>
-            <th><strong>Name of item</strong> </th>
-            <th><strong>Quantity</strong></th>
-            <th><strong>Rate</strong>  </th>
-            <th><strong>Per</strong>  </th>
-            <th><strong>Amount</strong></th>
-        </thead>
-        <tbody>
-            <tr>   
-                <td>                  
-                <select id="myselect3" onchange="window.location.href=this.value;"  style="width: 250px;height: 30px;" name="sale_vouch" >
-                <optgroup  label="Endlist"></optgroup>
-                <option  selected disabled ></option>
-                <option value="{% url 'stock_items_creation' %}">Create</option>
-                
-                {% for st in stock_items %}
-                <option name="stock" id="stock" value="{% url 'item_allocation' st.name %}" >
-                    {{st.name}}
-                </option>  
-                {% endfor %}
-            </td> 
-            <td><input  type="text" name="quantity" id=""></td>
+</div>
+<div class="container ">
+<div class="row">
+    <div class="col-md-12 d-flex justify-content-start">
+        <table class="table">
+            <tr>
+
+
+                <th>
+                    <label style="font-size:20px;" for="">Item</label>
+                    <select id="myselect3" onchange="window.location.href=this.value;"
+                        style="width: 250px;height: 30px;" name="sale_vouch">
+                        <optgroup label="Endlist"></optgroup>
+                        <option selected disabled></option>
+                        <option value="{% url 'stock_items_creation' %}">Create</option>
+
+                        {% for st in stock_items %}
+                        <option name="stock" id="stock" value="{% url 'item_allocation'  st.name  %}">
+                            {{st.name}}
+                        </option>
+                        {% endfor %}
+                    </select>
+                    <a href="" class="  btn btn-sm btn-success ">Add item allocate</a>
+                </th>
+                <th></th>
+                <!-- <td><a href="" class="mb-3 btn btn-success ">Add item allocate</a></td> -->
+            </tr>
+
+        </table>
+    </div>
+</div>
+</div>
+<div class="container">
+<table class="table">
+    <thead>
+        <th><strong>Name of item</strong> </th>
+        <th><strong>Quantity</strong></th>
+        <th><strong>Rate</strong> </th>
+        <th><strong>Per</strong> </th>
+        <th><strong>Amount</strong></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                <select id="myselect3" onchange="window.location.href=this.value;"
+                    style="width: 250px;height: 30px;" name="sale_vouch">
+                    <optgroup label="Endlist"></optgroup>
+                    <option selected disabled></option>
+                    <option value="{% url 'stock_items_creation' %}">Create</option>
+
+                    {% for st in stock_items %}
+                    <option name="stock" id="stock" value="{% url 'item_allocation' st.name %}">
+                        {{st.name}}
+                    </option>
+                    {% endfor %}
+            </td>
+            <td><input type="text" name="quantity" id=""></td>
             <td><input type="text" name="rate" id=""></td>
             <td><input type="text" name="per" id=""></td>
             <td><input type="text" name="Amount" id=""></td>
-            </tr>
-        </tbody>
-    </table>
+        </tr>
+    </tbody>
+</table>
 </div>
 </div>
 <script>
-    
-    function goToLink(){
-            var sel = document.getElementById("myselect");
-            var sel2= document.getElementById("myselect2");
-            var sel3= document.getElementById("myselect3");
-            var a = sel.value;
-            var b = sel2.value;
-            var c = sel3.value;
-            console.log(a);
-            if(a=="Create"){
-                window.location.href="{% url 'ledgers' %}"
-            }
-            if(b=="Create"){
-                window.location.href="{% url 'ledgers' %}"
-            }
 
+function goToLink() {
+    var sel = document.getElementById("myselect");
+    var sel2 = document.getElementById("myselect2");
+    var sel3 = document.getElementById("myselect3");
+    var a = sel.value;
+    var b = sel2.value;
+    var c = sel3.value;
+    console.log(a);
+    if (a == "Create") {
+        window.location.href = "{% url 'ledgers' %}"
     }
-            document.getElementById("myselect").addEventListener("change", function() {
-                if (this.value !== "Create"){
-                        $('#myModal').modal({
-                        backdrop: 'static',
-                        keyboard: false
-                        }).modal('show');
-                }
-            });
+    if (b == "Create") {
+        window.location.href = "{% url 'ledgers' %}"
+    }
 
-    // function goToLink2(){
-    //     var sel3= document.getElementById("myselect3");
-    //     var d=sel3.value;
-    //     if (d !="Create"){
-    //         window.location.href="{#% url 'item_allocation' %#}"
-    //     }
-        
-    // }
+}
+document.getElementById("myselect").addEventListener("change", function () {
+    if (this.value !== "Create") {
+        $('#myModal').modal({
+            backdrop: 'static',
+            keyboard: false
+        }).modal('show');
+    }
+});
+
+// function goToLink2(){
+//     var sel3= document.getElementById("myselect3");
+//     var d=sel3.value;
+//     if (d !="Create"){
+//         window.location.href="{#% url 'item_allocation' %#}"
+//     }
+
+// }
+
+// party detail modal javascript 
+fetch("https://restcountries.com/v2/all")
+    .then(response => response.json())
+    .then(data => {
+        var select = document.getElementById("country");
+        data.forEach(function (country) {
+            var option = document.createElement("option");
+            option.value = country.alpha2Code;
+            option.text = country.name;
+            select.appendChild(option);
+        });
+    });
+var gstreg = document.getElementById("gst_reg_typ")
+var txt_gsti = document.getElementById("txt_gstin")
+gstreg.addEventListener("change", function () {
+    if (gstreg.value == "Consumer" || gstreg.value == "Unregistered") {
+        txt_gsti.disabled = true;
+    } else {
+        txt_gsti.disabled = false;
+    }
+})
+function newpage() {
+    var sel = document.getElementById("myselect7");
+    var a = sel.value;
+    console.log(a);
+    if (a == "Create") {
+        window.location.href = "{% url 'ledgers' %}"
+    }
+}
+
+
+$('#party_modal').on('hidden.bs.modal', function () {
+  $('#myModal').modal('show');
+});
+
+$('#party_modal').on('show.bs.modal', function () {
+  $('#myModal').modal('hide');
+});
 </script>
 {% endblock %}

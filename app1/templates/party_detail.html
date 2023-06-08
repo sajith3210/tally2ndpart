@@ -54,7 +54,7 @@
                                <label for="">Buyer (Bill to)</label> 
                             </div>
                             <div class="col-8">
-                                <select onchange=newpage() id="myselect" class="form-control form-control-sm" name="buyer_bill_to" >
+                                <select onchange=newpage() id="myselect7" class="form-control form-control-sm" name="buyer_bill_to" >
                                     <optgroup  label="List Of Ledger Accounts"></optgroup>
                                     <option   selected disabled ></option>
                                     <option   >Create</option>
@@ -242,7 +242,7 @@
         }
     })
     function newpage(){
-            var sel = document.getElementById("myselect");
+            var sel = document.getElementById("myselect7");
             var a = sel.value;
             console.log(a);
             if(a=="Create"){

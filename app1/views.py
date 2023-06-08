@@ -11013,10 +11013,11 @@ def dispathch_detail(request):
                 date2=request.POST.get('date2')
                 disp=dispatch_detail(delivery_note_no=deli_note_no,dispatch_doc_no=dis_doc_no,dispatched_throught=dis_throug,destination=desti,carrier_name_agent=carrier_name_agent,bill_of_lading=bill_of_lad,mototr_vehicle_no=mot_vehicle_no,date1=date1,date2=date2,company=co)
                 disp.save()
+                print("deleviry note no is",disp.delivery_note_no)
                 #to get last saved row and save into session
                 dis_id=dispatch_detail.objects.latest('id')
                 request.session['disp_session']=dis_id.id
-                return redirect('party_detail')
+                return redirect('salesvoucher')
 
 def party_detail(request):
     if 't_id' in request.session:
