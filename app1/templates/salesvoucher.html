@@ -675,11 +675,19 @@ function newpage() {
 
 
 $('#party_modal').on('hidden.bs.modal', function () {
-  $('#myModal').modal('show');
+  $('#myModal').modal({
+  
+            backdrop: 'true',
+            keyboard: true 
+  }).modal('hide');   
 });
 
 $('#party_modal').on('show.bs.modal', function () {
-  $('#myModal').modal('hide');
+    $('#myModal').modal({
+  
+  backdrop: 'true',
+  keyboard: true 
+}).modal('hide');   
 });
 </script>
 {% endblock %}
