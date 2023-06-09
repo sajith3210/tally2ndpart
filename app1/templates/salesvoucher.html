@@ -55,7 +55,7 @@ input[type="date"] {
 <div class="card main-color">
 
     <div class="card-body">
-        <form action="{% url 'disp_party_detail' %}" method="post">
+        <form action="" method="post">
         <div class="row ">
             
                 {% csrf_token %}
@@ -465,9 +465,9 @@ input[type="date"] {
                                                             <div class="form-group row">
                                                                 <div class="col-4"></div>
                                                                 <div class="col-8">
-                                                                    <button class="btn btn-lg btn-success w-75"
+                                                                    <button type="button" data-dismiss="modal" class="btn btn-lg btn-success w-75"
                                                                         type="submit">
-                                                                        Save
+                                                                        Go to sales voucher page
                                                                     </button>
                                                                 </div>
                                                             </div>
