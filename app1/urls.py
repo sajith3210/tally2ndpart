@@ -679,6 +679,7 @@ urlpatterns = [
     path('salesvoucher/',views.sales_voucher,name='salesvoucher'),
     path('dispathch_detail/',views.dispathch_detail,name='dispathch_detail'),
     path('party_detail/',views.party_detail,name='party_detail'),
+    path('disp_party_detail/',views.disp_party_detail,name='disp_party_detail'),
     # path('item_alloc_redi/',views.item_alloc_redi,name='item_alloc_redi'),
 
     path('item_allocation/<str:name>/',views.item_allocation,name='item_allocation'),

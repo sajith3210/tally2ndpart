@@ -11056,6 +11056,40 @@ def party_detail(request):
 #                         'selected_value': selected_value
 #                       }
 #             return redirect('item_allocation', {'selected_value':selected_value})
+
+def disp_party_detail(request):
+            if 't_id' in request.session:
+                t_id=request.session['t_id']
+                co=Companies.objects.get(id=t_id)
+            if request.method=="POST":
+                deli_note_no=request.POST.get('delivery_note_no')
+                dis_doc_no=request.POST.get('dispatch_doc_no')
+                dis_throug=request.POST.get('dispatched_throught')
+                desti=request.POST.get('destination')
+                carrier_name_agent=request.POST.get('carrier_name_agent')
+                bill_of_lad=request.POST.get('bill_of_lading')
+                mot_vehicle_no=request.POST.get('mototr_vehicle_no')
+                date1=request.POST.get('date1')
+                date2=request.POST.get('date2')
+                disp=dispatch_detail(delivery_note_no=deli_note_no,dispatch_doc_no=dis_doc_no,dispatched_throught=dis_throug,destination=desti,carrier_name_agent=carrier_name_agent,bill_of_lading=bill_of_lad,mototr_vehicle_no=mot_vehicle_no,date1=date1,date2=date2,company=co)
+                disp.save()
+                print("deleviry note no is",disp.delivery_note_no)
+                #to get last saved row and save into session
+                dis_id=dispatch_detail.objects.latest('id')
+                # request.session['disp_session']=dis_id.id
+                buyer_bill_to=request.POST.get('buyer_bill_to')
+                mailing_name=request.POST.get('mailing_name')
+                adress=request.POST.get('adress')
+                state=request.POST.get('state')
+                country=request.POST.get('country')
+                gst_reg_typ=request.POST.get('gst_reg_typ')
+                GSTIN=request.POST.get('GSTIN')
+                place_of_supply=request.POST.get('place_of_supply')
+                party=party_details(dispatch_id=dis_id,buyer_bill_to=buyer_bill_to,mailing_name=mailing_name,adress=adress,states=state,country=country,gst_reg_type=gst_reg_typ,gstn_un=GSTIN,place_of_supply=place_of_supply,company=co)
+                party.save()
+                return redirect('salesvoucher')
+         
+
 from django.urls import reverse
 def item_allocation(request,name):
     if 't_id' in request.session:
