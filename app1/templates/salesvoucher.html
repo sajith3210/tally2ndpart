@@ -50,6 +50,10 @@ input[type="date"] {
     background-color: rgba(0, 0, 0, 0.2);
     color: white;
 }
+/* Custom CSS to align the modal to the right side */
+
+
+
 </style>
 <div class="container main-color">
 <div class="card main-color">
@@ -544,28 +548,119 @@ input[type="date"] {
     </div>
 </div>
 </div>
+
+
+
+        <!-- item allocation modal started  -->
+        <div class="modal  fade" id="itm_allo_mod" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable" role="document">
+                <div style="background-color:#2f516f;margin-top: auto;" class="modal-content ">
+                    <div class="modal-header">
+                        <button class="close" data-dismiss="modal">&times;</button>
+                        <h4>This is the header title</h4>
+                    </div>
+                    <div class="modal-body mt-10" style="overflow: auto;">
+                        <div class="row mt-5 justify-content-center align-items-center">
+                            
+                            <div class="col-md-12">
+                                <div class="container">
+                                    <div class="card">
+                                        <div  class="card-body">
+                                            <h1 style="background-color: hsl(0, 0%, 0%);">{{selected_value}} </h1>
+                        
+                                            <p id="itm_nm">Item Allocations for : <strong style="font-size: medium;">{{name}}</strong>
+                                     <!-- <a href="{#% url 'item_allocation_add' name %#}" id="additem"class="btn btn-md btn-primary">Add item</a> -->
+                                                    
+                                            </p>
+                        
+                        
+                                            <hr>
+                                                <input hidden type="text" name="item_name" id="" value="{{stock_it.name}}">
+                                                <table id="mytable" class="table table-sm">
+                                                    {% csrf_token %}
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Location</th>
+                                                            <th>Quantity</th>
+                                                            <th>Rate</th>
+                                                            <th>Per</th>
+                                                            <th>Amount</th>
+                                                            <th>Action</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                        
+                        
+                        
+                                                        {% if sales_st_it_allo %}
+                                                       
+                                                            {% for sal_st in sales_st_it_allo %}
+                                                            <tr>
+                                                            <td> <input disabled type="text" value="{{sal_st.location}}"
+                                                                    class="form-control form-control-sm" size="3" type="number" name="location"
+                                                                    id="quantity"></td>
+                                                            <td><input disabled value="{{sal_st.quantity}}"  class=" form-control
+                                                                    form-control-sm" size="3" type="number" name="quantity" id="quantity"></td>
+                                                            <td><input disabled value="{{sal_st.rate}}"  class=" form-control form-control-sm"
+                                                                    size="3" type="number" name="rate" id="rate"></td>
+                                                            <td><input disabled value="{{sal_st.per}}" type="text"
+                                                                    class="form-control form-control-sm" size="3" name="per" id=""></td>
+                                                            <td><input disabled value="{{sal_st.amount}}" type="text"
+                                                                    class="form-control form-control-sm" size="3" type="number" name="amount"
+                                                                    id="amount"></td>
+                                                            <td>
+                                                                
+                                                                <!-- <a href="#{% url 'item_allocation_edit' sal_st.id %}#" class="btn btn-sm btn-success">Edit</a> -->
+                                                                <!-- <a href="#{% url 'item_allocation_delete' sal_st.id %}#" class="btn btn-sm btn-success">Delete</a> -->
+                                                            </td>
+                                                        </tr>
+                                                            {% endfor %}
+                                                        
+                                                        {% endif %}
+                        
+                                                    </tbody>
+                                                </table>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            
+                        </div>    
+                    </div>
+                    
+                        <div class="modal-footer">
+            
+                        </div>
+                </div>
+                </div>
+                </div>
+            <!-- item allocation modal end  -->
 <div class="container ">
 <div class="row">
     <div class="col-md-12 d-flex justify-content-start">
+
         <table class="table">
             <tr>
 
 
                 <th>
+
                     <label style="font-size:20px;" for="">Item</label>
-                    <select id="myselect3" onchange="window.location.href=this.value;"
-                        style="width: 250px;height: 30px;" name="sale_vouch">
+                    <select id="itmAlloc" style="width: 250px;height: 30px;" name="sale_vouch" onchange="goToLink();">
                         <optgroup label="Endlist"></optgroup>
                         <option selected disabled></option>
-                        <option value="{% url 'stock_items_creation' %}">Create</option>
+                        
+                        <option value="Create">Create</option>
 
                         {% for st in stock_items %}
-                        <option name="stock" id="stock" value="{% url 'item_allocation'  st.name  %}">
+                        <option name="stock" id="stock" value="{{st.name }}">
                             {{st.name}}
                         </option>
                         {% endfor %}
                     </select>
-                    <a href="" class="  btn btn-sm btn-success ">Add item allocate</a>
+                    <!-- <a href="" class="  btn btn-sm btn-success ">Add item allocate</a> -->
                 </th>
                 <th></th>
                 <!-- <td><a href="" class="mb-3 btn btn-success ">Add item allocate</a></td> -->
@@ -615,9 +710,11 @@ function goToLink() {
     var sel = document.getElementById("myselect");
     var sel2 = document.getElementById("myselect2");
     var sel3 = document.getElementById("myselect3");
+    var itm = document.getElementById("itmAlloc");
     var a = sel.value;
     var b = sel2.value;
     var c = sel3.value;
+    var d=itm.value;
     console.log(a);
     if (a == "Create") {
         window.location.href = "{% url 'ledgers' %}"
@@ -625,8 +722,12 @@ function goToLink() {
     if (b == "Create") {
         window.location.href = "{% url 'ledgers' %}"
     }
+    if (d == "Create") {
+        window.location.href = "{% url 'stock_items_creation' %}"
+    }
 
 }
+// dispathc detail modal 
 document.getElementById("myselect").addEventListener("change", function () {
     if (this.value !== "Create") {
         $('#myModal').modal({
@@ -691,5 +792,23 @@ $('#party_modal').on('show.bs.modal', function () {
   keyboard: true 
 }).modal('hide');   
 });
+
+// item allocation modal 
+document.getElementById("itmAlloc").addEventListener("change", function () {
+    if (this.value !== "Create") {
+        $('#itm_allo_mod').modal({
+            backdrop: 'static',
+            keyboard: false
+        }).modal('show');
+    }
+});
+
+// item name display item allocation modal 
+console.clear();
+var it=document.getElementById("itmAlloc");
+var it_value="{{st.name }}";
+
+console.log("value is",it_value)
+document.getElementById('itm_nm').textContent =it_value;
 </script>
 {% endblock %}

@@ -10982,7 +10982,8 @@ def sales_voucher(request):
         if request.method=="GET":
             print('sales voucher view start')
             global stk_name 
-            
+            sales_st_it_allo=sales_voucher_stock_item_allocation.objects.all()
+            crt_god=CreateGodown.objects.all()
             stk_name=request.GET.get('stock')
             print("STk name is",stk_name)
             billno=request.GET.get('billno')
@@ -10991,7 +10992,7 @@ def sales_voucher(request):
             stock_items=stock_itemcreation.objects.all()
             party_ledg=tally_ledger.objects.filter(under__in=['Sundry_Debtors','Cash_in_Hand','Branch_Divisions','Sundry_Creditors'])
             sale_ledg=tally_ledger.objects.filter(under__in=['Sales_Account'])
-            return render(request,'salesvoucher.html',{'party_ledg':party_ledg,'sale_ledg':sale_ledg,'stock_items':stock_items,'stk_name':stk_name})
+            return render(request,'salesvoucher.html',{'party_ledg':party_ledg,'sale_ledg':sale_ledg,'stock_items':stock_items,'stk_name':stk_name,'sales_st_it_allo':sales_st_it_allo})
         if request.method=="POST":
                 deli_note_no=request.POST.get('delivery_note_no')
                 dis_doc_no=request.POST.get('dispatch_doc_no')
@@ -11125,10 +11126,10 @@ def item_allocation(request,name):
         co=Companies.objects.get(id=t_id)
         crt_god=CreateGodown.objects.all()
         # sl_co=sales_voucher_stock_item_allocation.objects.filter(company=t_id,item_name=stock_it.name)
-        sale_stock_all=sales_voucher_stock_item_allocation.objects.all()
+       
         if request.method=="GET": 
             # context={'selected_value':selected_value}
-            return render(request,'item_allocation.html',{'crt_god':crt_god,'sale_stock_all':sale_stock_all,'sales_st_it_allo':sales_st_it_allo,'name':name},)
+            return render(request,'item_allocation.html',{'crt_god':crt_god,'sales_st_it_allo':sales_st_it_allo,'name':name},)
 
 def item_allocation_add(request,name):
     if 't_id' in request.session:
