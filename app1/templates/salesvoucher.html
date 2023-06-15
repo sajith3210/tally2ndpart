@@ -576,7 +576,7 @@ input[type="date"] {
                         
                                             <hr>
                                                 <input hidden type="text" name="item_name" id="" value="{{stock_it.name}}">
-                                                <table id="mytable" class="table table-sm">
+                                                <table id="mytable" class="table table-sm table-bordered border-2">
                                                     {% csrf_token %}
                                                     <thead>
                                                         <tr>
@@ -597,21 +597,21 @@ input[type="date"] {
                                                             {% for sal_st in sales_st_it_allo %}
                                                             <tr>
                                                             <td> <input disabled type="text" value="{{sal_st.location}}"
-                                                                    class="form-control form-control-sm" size="3" type="number" name="location"
+                                                                    class="form-control form-control-sm " size="3 " type="number" name="location"
                                                                     id="quantity"></td>
                                                             <td><input disabled value="{{sal_st.quantity}}"  class=" form-control
-                                                                    form-control-sm" size="3" type="number" name="quantity" id="quantity"></td>
-                                                            <td><input disabled value="{{sal_st.rate}}"  class=" form-control form-control-sm"
+                                                                    form-control-sm w-75 p-2" size="3" type="number" name="quantity" id="quantity"></td>
+                                                            <td><input disabled value="{{sal_st.rate}}"  class=" form-control form-control-sm w-75 p-2"
                                                                     size="3" type="number" name="rate" id="rate"></td>
                                                             <td><input disabled value="{{sal_st.per}}" type="text"
-                                                                    class="form-control form-control-sm" size="3" name="per" id=""></td>
+                                                                    class="form-control form-control-sm w-100 pl-3 pr-3" size="3" name="per" id=""></td>
                                                             <td><input disabled value="{{sal_st.amount}}" type="text"
-                                                                    class="form-control form-control-sm" size="3" type="number" name="amount"
+                                                                    class="form-control form-control-sm w-75 p-2" size="3" type="number" name="amount"
                                                                     id="amount"></td>
-                                                            <td>
+                                                            <td >
                                                                 
-                                                                <!-- <a href="#{% url 'item_allocation_edit' sal_st.id %}#" class="btn btn-sm btn-success">Edit</a> -->
-                                                                <!-- <a href="#{% url 'item_allocation_delete' sal_st.id %}#" class="btn btn-sm btn-success">Delete</a> -->
+                                                                <a id="itmEditBtn" target="_blank"   class="bg-primary pl-4 pr-4 w-75" href="{% url 'item_allocation_edit' sal_st.id %}" >Edit</a>
+                                                                <a id="itmDeleteBtn"  target="_blank" class="bg-danger pl-4 pr-2 w-75" href="{% url 'item_allocation_delete' sal_st.id %}" >Delete</a>
                                                             </td>
                                                         </tr>
                                                             {% endfor %}
@@ -810,5 +810,7 @@ var it_value="{{st.name }}";
 
 console.log("value is",it_value)
 document.getElementById('itm_nm').textContent =it_value;
+
+
 </script>
 {% endblock %}

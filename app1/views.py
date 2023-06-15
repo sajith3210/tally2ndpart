@@ -11173,7 +11173,8 @@ def item_allocation_edit(request,pk):
                 sal=sales_voucher_stock_item_allocation(item_name=itm_nm,location=loc,quantity=qua,rate=rat,per=pe,amount=am,company=co)
                 sal.save()
                 print("success this")
-                return redirect('item_allocation')
+                new_url = reverse('item_allocation_edit', kwargs={'pk': pk})
+                return redirect(new_url)
             
 def item_allocation_delete(request,pk):
         if 't_id' in request.session:
