@@ -10992,7 +10992,7 @@ def sales_voucher(request):
             stock_items=stock_itemcreation.objects.all()
             party_ledg=tally_ledger.objects.filter(under__in=['Sundry_Debtors','Cash_in_Hand','Branch_Divisions','Sundry_Creditors'])
             sale_ledg=tally_ledger.objects.filter(under__in=['Sales_Account'])
-            return render(request,'salesvoucher.html',{'party_ledg':party_ledg,'sale_ledg':sale_ledg,'stock_items':stock_items,'stk_name':stk_name,'sales_st_it_allo':sales_st_it_allo})
+            return render(request,'salesvoucher.html',{'party_ledg':party_ledg,'sale_ledg':sale_ledg,'stock_items':stock_items,'stk_name':stk_name,'sales_st_it_allo':sales_st_it_allo,'crt_god':crt_god})
         if request.method=="POST":
                 deli_note_no=request.POST.get('delivery_note_no')
                 dis_doc_no=request.POST.get('dispatch_doc_no')
@@ -11173,7 +11173,8 @@ def item_allocation_edit(request,pk):
                 sal=sales_voucher_stock_item_allocation(item_name=itm_nm,location=loc,quantity=qua,rate=rat,per=pe,amount=am,company=co)
                 sal.save()
                 print("success this")
-                return redirect('item_allocation')
+                new_url = reverse('item_allocation_edit', kwargs={'pk': pk})
+                return redirect(new_url)
             
 def item_allocation_delete(request,pk):
         if 't_id' in request.session:

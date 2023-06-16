@@ -568,15 +568,64 @@ input[type="date"] {
                                         <div  class="card-body">
                                             <h1 style="background-color: hsl(0, 0%, 0%);">{{selected_value}} </h1>
                         
-                                            <p id="itm_nm">Item Allocations for : <strong style="font-size: medium;">{{name}}</strong>
+                                            <p id="itm_nm">Item Allocations for : <strong style="font-size: medium;"></strong>
                                      <!-- <a href="{#% url 'item_allocation_add' name %#}" id="additem"class="btn btn-md btn-primary">Add item</a> -->
-                                                    
+                                              <div class="row">
+                                                <div class="col-md-2 mr-3">
+                                                    <label for="">Location</label>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <label for="">Quantity</label>
+                                                </div>
+                                                <div class="col-md-2 mr-3">
+                                                    <label for="">Rate</label>
+                                                </div>
+                                                <div class="col-md-2 mr-3">
+                                                    <label for="">Per</label>
+                                                </div>
+                                                <div class="col-md-2 mr-3">
+                                                    <label for="">Amount</label>
+                                                </div>
+
+                                              </div> 
+                                              <div class="row ">
+                                                  <div class="col-md-2 mr-3">
+                                                    <select class="form-control form-control-sm" id="myselect" style="width: 120px;height: 30px;" name="location" onchange="goToLink();" >
+                                                        <optgroup  label="List Of Locations"></optgroup>
+                                                         <option value="Create">Create</option>
+                                                         <option value="" selected></option>
+                                                         {% for cr  in crt_god  %}
+                                                         <option name="" value="{{cr.name}}">{{cr.name}}</option>
+                                                         {% endfor %}
+                                                        </select>
+                                                  </div>
+                                                  <div class="col-md-2 mr-3 ">
+                                                    <input   class="form-control form-control-sm w-100 " size="3" type="number" name="quantity" id="quantity">                            
+                                                  </div>
+                                                  <div class="col-md-2 mr-3">
+                                                    <input   class="form-control form-control-sm w-100 " size="3" type="number" name="rate" id="rate">
+                                                  </div>
+                                                  <div class="col-md-2 mr-3">
+                                                    <input disabled  value="nos"  class="form-control form-control-sm w-100 " size="3" type="text" name="per" id="rate">
+                                                  </div>
+                                                  <div class="col-md-2 mr-3">
+                                                    <input   class="form-control form-control-sm w-100 " size="3" type="number" name="amount" id="amount">
+                                                  </div>
+
+                                              </div>  
+                                              <div class="row mt-3">
+                                                <div class="col-md-3"></div>
+                                                <div class="col-md-6">
+                                                    <input class="btn btn-sm w-75 btn-success" type="button" value="Add a item">
+                                                </div>
+
+                                              </div>   
                                             </p>
                         
                         
                                             <hr>
                                                 <input hidden type="text" name="item_name" id="" value="{{stock_it.name}}">
-                                                <table id="mytable" class="table table-sm">
+                                                <table id="mytable" class="table table-sm table-bordered border-2">
                                                     {% csrf_token %}
                                                     <thead>
                                                         <tr>
@@ -597,21 +646,22 @@ input[type="date"] {
                                                             {% for sal_st in sales_st_it_allo %}
                                                             <tr>
                                                             <td> <input disabled type="text" value="{{sal_st.location}}"
-                                                                    class="form-control form-control-sm" size="3" type="number" name="location"
+                                                                    class="form-control form-control-sm " size="3 " type="number" name="location"
                                                                     id="quantity"></td>
                                                             <td><input disabled value="{{sal_st.quantity}}"  class=" form-control
-                                                                    form-control-sm" size="3" type="number" name="quantity" id="quantity"></td>
-                                                            <td><input disabled value="{{sal_st.rate}}"  class=" form-control form-control-sm"
+                                                                    form-control-sm w-75 p-2" size="3" type="number" name="quantity" id="quantity"></td>
+                                                            <td><input disabled value="{{sal_st.rate}}"  class=" form-control form-control-sm w-75 p-2"
                                                                     size="3" type="number" name="rate" id="rate"></td>
                                                             <td><input disabled value="{{sal_st.per}}" type="text"
-                                                                    class="form-control form-control-sm" size="3" name="per" id=""></td>
+                                                                    class="form-control form-control-sm w-100 pl-3 pr-3" size="3" name="per" id=""></td>
                                                             <td><input disabled value="{{sal_st.amount}}" type="text"
-                                                                    class="form-control form-control-sm" size="3" type="number" name="amount"
+                                                                    class="form-control form-control-sm w-75 p-2" size="3" type="number" name="amount"
                                                                     id="amount"></td>
-                                                            <td>
+                                                            <td >
                                                                 
-                                                                <!-- <a href="#{% url 'item_allocation_edit' sal_st.id %}#" class="btn btn-sm btn-success">Edit</a> -->
-                                                                <!-- <a href="#{% url 'item_allocation_delete' sal_st.id %}#" class="btn btn-sm btn-success">Delete</a> -->
+                                                                <input id="itmEditBtn" class="btn btn-sm btn-primary" value="Edit" type="text" name="" >
+                                                                <input id="itmDelBtn" class="btn btn-sm btn-danger" value="Delete" type="text" name="" >
+                                                                
                                                             </td>
                                                         </tr>
                                                             {% endfor %}
@@ -809,6 +859,8 @@ var it=document.getElementById("itmAlloc");
 var it_value="{{st.name }}";
 
 console.log("value is",it_value)
-document.getElementById('itm_nm').textContent =it_value;
+// document.getElementById('itm_nm').textContent =it_value;
+
+
 </script>
 {% endblock %}

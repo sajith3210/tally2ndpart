@@ -1724,10 +1724,25 @@ class party_details(models.Model):
     gstn_un=models.CharField(max_length=200)
     place_of_supply=models.CharField(default="Kerala",max_length=200)
 
+
+class sales_voucher_stock_item_allocation(models.Model):
+    item_name=models.CharField(max_length=200)
+    location=models.CharField(max_length=200)
+    quantity=models.IntegerField(null=True,blank=True)
+    rate=models.IntegerField(null=True,blank=True)
+    per=models.CharField(max_length=100, null=True,blank=True)
+    amount=models.IntegerField(null=True,blank=True)
+    
+    company = models.ForeignKey(Companies,on_delete = models.CASCADE,null = True)
+    dispatch_id=models.ForeignKey(dispatch_detail,on_delete=models.CASCADE,null=True,blank=True)
+    party_detail_id=models.ForeignKey(party_details,on_delete=models.CASCADE,null=True,blank=True)
+
+
 class sales_invoice(models.Model):
     company = models.ForeignKey(Companies,on_delete = models.CASCADE,null = True)
     dispatch_id=models.ForeignKey(dispatch_detail,on_delete=models.CASCADE,null=True)
     party_detail_id=models.ForeignKey(party_details,on_delete=models.CASCADE,null=True)
+    sale_vou_stk_itm_allo_id=models.ForeignKey(sales_voucher_stock_item_allocation,on_delete=models.CASCADE,null=True)
     inv_num=models.IntegerField(null=True,blank=True)
     date=models.IntegerField(null=True,blank=True,)
     party_ac_name=models.CharField(max_length=200,default='',null=True,blank=True)
@@ -1741,17 +1756,7 @@ class sales_invoice(models.Model):
     amount=models.IntegerField(null=True,blank=True)
 
 
-class sales_voucher_stock_item_allocation(models.Model):
-    item_name=models.CharField(max_length=200)
-    location=models.CharField(max_length=200)
-    quantity=models.IntegerField(null=True,blank=True)
-    rate=models.IntegerField(null=True,blank=True)
-    per=models.CharField(max_length=100, null=True,blank=True)
-    amount=models.IntegerField(null=True,blank=True)
-    sales_invoice_id=models.ForeignKey(sales_invoice,on_delete=models.CASCADE,null=True)
-    company = models.ForeignKey(Companies,on_delete = models.CASCADE,null = True)
-    dispatch_id=models.ForeignKey(dispatch_detail,on_delete=models.CASCADE,null=True,blank=True)
-    party_detail_id=models.ForeignKey(party_details,on_delete=models.CASCADE,null=True,blank=True)
+
     
 
 
