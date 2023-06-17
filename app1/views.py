@@ -5572,10 +5572,10 @@ def godown_creation(request):
             t_id = request.session['t_id']
         else:
             return redirect('/')
-        tally = Companies.objects.filter(id=t_id)
+        tal = Companies.objects.filter(id=t_id)
         gd=CreateGodown.objects.all()
 	    # com=Companies.objects.get(id=pk) 
-        return render(request,'godown.html',{'gd':gd,'tally':tally})
+        return render(request,'godown.html',{'gd':gd,'tal':tal})
     return redirect('/')
 
 def godown(request):
@@ -5584,16 +5584,17 @@ def godown(request):
             t_id = request.session['t_id']
         else:
             return redirect('/')
-        tally = Companies.objects.filter(id=t_id)
+        ta = Companies.objects.get(id=t_id)
         gd=CreateGodown.objects.all()
         if request.method=='POST':
             name=request.POST['name']
             alias=request.POST['alias']
             under_name=request.POST['under_name']
-            gdcrt=CreateGodown(name=name,alias=alias,under_name=under_name)
+            
+            gdcrt=CreateGodown(comp=ta,name=name,alias=alias,under_name=under_name)
             gdcrt.save()
             return redirect('godown')
-        return render(request,'godown.html',{'gd':gd,'tally':tally})
+        return render(request,'godown.html',{'gd':gd,'ta':ta})
     return redirect('/')  
 
 def load_rev(request):

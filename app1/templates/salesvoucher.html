@@ -659,9 +659,8 @@ input[type="date"] {
                                                                     id="amount"></td>
                                                             <td >
                                                                 
-                                                                <input id="itmEditBtn" class="btn btn-sm btn-primary" value="Edit" type="text" name="" >
-                                                                <input id="itmDelBtn" class="btn btn-sm btn-danger" value="Delete" type="text" name="" >
-                                                                
+                                                                <input class="btn btn-success w-75 mb-2" type="button" value="Edit" data-sid="">
+                                                                <input class="btn btn-danger w-75" type="button" value="Delete" data-sid="">
                                                             </td>
                                                         </tr>
                                                             {% endfor %}
@@ -859,8 +858,6 @@ var it=document.getElementById("itmAlloc");
 var it_value="{{st.name }}";
 
 console.log("value is",it_value)
-// document.getElementById('itm_nm').textContent =it_value;
-
-
+document.getElementById('itm_nm').textContent =it_value;
 </script>
 {% endblock %}
