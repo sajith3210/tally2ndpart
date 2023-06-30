@@ -26,6 +26,18 @@
         date2: date2,
         csrfmiddlewaretoken: csr,
       };
-      $.ajax()
+      $.ajax({
+        url: "{% url 'dispatch_save' %}",
+        method:"POST",
+        data: mydata,
+        dataType: "json",
+        success:function (data){
+            if (data.status == "Save"){
+                $("#msg").text("Dispatch detail save");
+                $("#msg").show();
+            }
+        }
+
+      })
     })
 </script>

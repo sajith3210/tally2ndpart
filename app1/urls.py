@@ -687,6 +687,7 @@ urlpatterns = [
     path('item_allocation_delete/<int:pk>/',views.item_allocation_delete,name='item_allocation_delete'),
     path('item_allocation_edit/<int:pk>/',views.item_allocation_edit,name='item_allocation_edit'),
     path('sales_allocation_stock/',views.sales_allocation_stock,name='sales_allocation_stock'),
+    path('dispatch_save/',views.dispatch_save,name='dispatch_save'),
     # path('new_ledger/',views.new_ledger,name='new_ledger'),
     path(r'^media/(?P<path>.*)$', serve,{'document_root': settings.MEDIA_ROOT}),
               

@@ -98,7 +98,8 @@ input[type="date"] {
                                                             Dispatch Details</center>
                                                     </strong>
                                                     <!-- card divide row  -->
-                                               
+                                                    <form action="" method="post">
+                                                        {% csrf_token %}
                                                         <div class="row mt-2 form-group">
                                                             <div class="col-md-3">
                                                                 <p>Delivery Note No(s) :</p>
@@ -177,7 +178,10 @@ input[type="date"] {
                                                                             type="text" name="mototr_vehicle_no"
                                                                              style="display: inline;">
                                                                             <br>
-                                                                            <button id="save_dis" class="btn btn-success mt-3">Save Dispatch Detail</button>
+                                                                            <button type="submit" id="save_dis" class="btn btn-success mt-3">Save Dispatch Detail</button><br>
+                                                                            <div style="display: none;" id="msg" class="alert alert-success">
+                                                                                
+                                                                            </div>
                                                                     </div>
 
                                                                 </div>
@@ -222,7 +226,7 @@ input[type="date"] {
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    
+                                                    </form>
                                                 </div>
                                             </div>
                                         </div>
