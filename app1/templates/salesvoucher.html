@@ -102,8 +102,8 @@ input[type="date"] {
                                                         <div class="row mt-2 form-group">
                                                             <div class="col-md-3">
                                                                 <p>Delivery Note No(s) :</p>
-                                                                <input class="form-control form-control-sm"
-                                                                    type="number" name="delivery_note_no" id="">
+                                                                <input id="delivery_note_no" class="form-control form-control-sm"
+                                                                    type="number" name="delivery_note_no" >
                                                             </div>
 
                                                             <div class="col-md-6">
@@ -113,9 +113,9 @@ input[type="date"] {
                                                                             No(s) :</p>
                                                                     </div>
                                                                     <div class="col-7">
-                                                                        <input class="form-control form-control-sm"
+                                                                        <input id="dispatch_doc_no" class="form-control form-control-sm"
                                                                             type="number" name="dispatch_doc_no"
-                                                                            id="" style="display: inline;">
+                                                                             style="display: inline;">
                                                                     </div>
 
                                                                 </div>
@@ -125,9 +125,9 @@ input[type="date"] {
                                                                             through :</p>
                                                                     </div>
                                                                     <div class="col-7">
-                                                                        <input class="form-control form-control-sm"
+                                                                        <input id="dispatched_throught" class="form-control form-control-sm"
                                                                             type="text" name="dispatched_throught"
-                                                                            id="" style="display: inline;">
+                                                                             style="display: inline;">
                                                                     </div>
 
                                                                 </div>
@@ -137,8 +137,8 @@ input[type="date"] {
                                                                         </p>
                                                                     </div>
                                                                     <div class="col-7">
-                                                                        <input class="form-control form-control-sm"
-                                                                            type="text" name="destination" id=""
+                                                                        <input id="destination" class="form-control form-control-sm"
+                                                                            type="text" name="destination" 
                                                                             style="display: inline;">
                                                                     </div>
 
@@ -149,9 +149,9 @@ input[type="date"] {
                                                                             Name/Agent :</p>
                                                                     </div>
                                                                     <div class="col-7">
-                                                                        <input class="form-control form-control-sm"
+                                                                        <input id="carrier_name_agent" class="form-control form-control-sm"
                                                                             type="text" name="carrier_name_agent"
-                                                                            id="" style="display: inline;">
+                                                                             style="display: inline;">
                                                                     </div>
 
                                                                 </div>
@@ -161,8 +161,8 @@ input[type="date"] {
                                                                             Lading/LR-RR No:</p>
                                                                     </div>
                                                                     <div class="col-7">
-                                                                        <input class="form-control form-control-sm"
-                                                                            type="text" name="bill_of_lading" id=""
+                                                                        <input id="bill_of_lading" class="form-control form-control-sm"
+                                                                            type="text" name="bill_of_lading" 
                                                                             style="display: inline;">
                                                                     </div>
 
@@ -173,9 +173,11 @@ input[type="date"] {
                                                                             No:</p>
                                                                     </div>
                                                                     <div class="col-7">
-                                                                        <input class="form-control form-control-sm"
+                                                                        <input id="mototr_vehicle_no" class="form-control form-control-sm"
                                                                             type="text" name="mototr_vehicle_no"
-                                                                            id="" style="display: inline;">
+                                                                             style="display: inline;">
+                                                                            <br>
+                                                                            <button id="save_dis" class="btn btn-success mt-3">Save Dispatch Detail</button>
                                                                     </div>
 
                                                                 </div>
@@ -187,9 +189,9 @@ input[type="date"] {
                                                                         <p style="display: inline;">Date:</p>
                                                                     </div>
                                                                     <div class="col-7">
-                                                                        <input style="width:130px"
+                                                                        <input id="date1" style="width:130px"
                                                                             class="form-control " type="date"
-                                                                            name="date1" id=""
+                                                                            name="date1" 
                                                                             style="display: inline;">
                                                                     </div>
 
@@ -199,19 +201,19 @@ input[type="date"] {
                                                                         <p style="display: inline;">Date:</p>
                                                                     </div>
                                                                     <div class="col-7">
-                                                                        <input style="width:130px"
+                                                                        <input id="date2" style="width:130px"
                                                                             class="form-control " type="date"
-                                                                            name="date2" id=""
+                                                                            name="date2" 
                                                                             style="display: inline;">
                                                                     </div>
 
                                                                 </div>
                                                                 <div class="form-group row">
                                                                     <div class="col-11">
-                                                                        <button  data-toggle="modal" data-target="#party_modal"
+                                                                       <strong> <button style="font-size: 14px;"  data-toggle="modal" data-target="#party_modal"
                                                                             class="btn btn-success btn-lg w-100"
                                                                             type="button">Go to party detail
-                                                                            </button>
+                                                                            </button></strong>
                                                                     </div>
                                                                     <div class="col-1">
 
@@ -861,3 +863,4 @@ console.log("value is",it_value)
 document.getElementById('itm_nm').textContent =it_value;
 </script>
 {% endblock %}
+{% include "sale_vou_ajax.html"%}

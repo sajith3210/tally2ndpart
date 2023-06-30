@@ -1,0 +1,31 @@
+<script>
+    //insert dispathch detail
+    $("#save_dis").click(function(event) {
+      console.log("Dispathch btn clicked");
+        output=""
+        event.preventDefault()
+        let deli_note_no=$("#delivery_note_no").val();
+        let dis_doc_no= $("#dispatch_doc_no").val();
+        let dis_th =$("#dispatched_throught").val();
+        let desti =$("#destination").val();
+        let car_nme_agnt =$("#carrier_name_agent").val();
+        let bill_of_lading =$("#bill_of_lading").val();
+        let mototr_veh_no =$("#mototr_vehicle_no").val();
+        let date1 =$("#date1").val();
+        let date2 =$("#date2").val();
+        let csr = $("input[name=csrfmiddlewaretoken").val();
+        mydata = {
+        delivery_note_no: deli_note_no,
+        dispatch_doc_no: dis_doc_no,
+        dispatched_throught: dis_th,
+        destination: desti,
+        carrier_name_agent: car_nme_agnt,
+        bill_of_lading: bill_of_lading,
+        mototr_vehicle_no: mototr_veh_no,
+        date1: date1,
+        date2: date2,
+        csrfmiddlewaretoken: csr,
+      };
+      $.ajax()
+    })
+</script>
